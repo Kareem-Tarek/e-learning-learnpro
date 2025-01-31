@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        .today {
+            background-color: #0088ff !important;
+            color: rgb(255, 255, 255) !important;
+            font-weight: bold !important;
+            border-radius: 50% !important;
+            text-align: center !important;
+        }        
+    </style>
     <link rel="stylesheet" href="assets/css/preloader.css">
 </head>
 <body>
@@ -86,7 +95,9 @@
                 <div class="col-md-4">
                     <div class="card p-3">
                         <h5>Calendar</h5>
-                        <div id="calendar"></div>
+                        <div class="table-responsive">
+                            <div id="calendar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -209,7 +220,7 @@
         });
     </script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/calendar.js"></script>
     <!-- Preloader Hide Script -->
     <script>
         window.onload = function() {

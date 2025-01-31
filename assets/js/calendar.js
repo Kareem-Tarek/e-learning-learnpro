@@ -35,6 +35,9 @@ function generateCalendar(date) {
 function generateCalendarDays(year, month) {
     let firstDay = new Date(year, month, 1).getDay();
     let daysInMonth = new Date(year, month + 1, 0).getDate();
+    let today = new Date(); // Get current date
+    let isCurrentMonth = today.getFullYear() === year && today.getMonth() === month;
+    let currentDay = today.getDate(); // Get today's date number
     let calendarHtml = "<tr>";
 
     for (let i = 0; i < firstDay; i++) {
@@ -45,7 +48,11 @@ function generateCalendarDays(year, month) {
         if ((firstDay + day - 1) % 7 === 0) {
             calendarHtml += "</tr><tr>";
         }
-        calendarHtml += `<td>${day}</td>`;
+
+        // Highlight today's date
+        let highlightClass = isCurrentMonth && day === currentDay ? 'class="today"' : '';
+
+        calendarHtml += `<td ${highlightClass}>${day}</td>`;
     }
 
     calendarHtml += "</tr>";
