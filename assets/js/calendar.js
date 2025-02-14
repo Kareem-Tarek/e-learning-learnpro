@@ -23,7 +23,7 @@ function generateCalendar(date) {
     
     return `
         <h6>${monthNames[currentMonth]} ${currentYear}</h6>
-        <table class="table table-sm table-borderless">
+        <table class="table table-sm table-borderless compact-table">
             <thead>
                 <tr>${["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(d => `<th>${d}</th>`).join('')}</tr>
             </thead>

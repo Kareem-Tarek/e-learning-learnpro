@@ -14,6 +14,34 @@
         .card-data:hover {
             background-color: #cee6ff82;
         }
+        /* Ensure all cards have equal height */
+        .card-data {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Ensure the text link takes up available space */
+        .card-data a {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Ensure images are well-contained */
+        .card-data img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Ensure star rating is aligned at the bottom */
+        .card-data span.fw-bold {
+            text-align: left;
+            margin-top: auto;
+        }
     </style>
 </head>
 <body>
@@ -74,62 +102,73 @@
             <!-- Courses Grid -->
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <div class="card card-data p-3">
+                    <div class="card card-data p-3 d-flex flex-column h-100">
                         <span class="text-primary">IBM Certificate</span>
-                        <a href="./courses-page/ui_ux.html" class="text-decoration-none" style="color: inherit;">
+                        <a href="./courses-page/ui_ux.html" class="text-decoration-none text-dark flex-grow-1">
                             <img src="assets/images/ui-ux.webp" class="img-fluid rounded my-2">
                             <h5 class="fw-bold">UI/UX Design</h5>
                             <p>Our UI/UX process gathers user insights through interviews, surveys, and tests to shape design decisions.</p>
-                            <span class="fw-bold">4.8 ⭐</span>
                         </a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card card-data p-3">
-                        <span class="text-primary">Microsoft Certified</span>
-                        <a href="./courses-page/full_stack.html" class="text-decoration-none" style="color: inherit;">
-                            <img src="assets/images/full-stack.png" class="img-fluid rounded my-2">
-                            <h5 class="fw-bold">Full Stack Development</h5>
-                            <p>Master front-end and back-end development with projects in HTML, CSS, JavaScript, Database (MS SQL Server), C#, .NET Core Framework, APIs, MVC, and Design Patterns.</p>
-                            <span class="fw-bold">4.5 ⭐</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card card-data p-3">
-                        <span class="text-primary">Adobe Certified</span>
-                        <a href="./courses-page/graphic.html" class="text-decoration-none" style="color: inherit;">
-                            <img src="assets/images/graphic-design.jpg" class="img-fluid rounded my-2">
-                            <h5 class="fw-bold">Graphic Foundation</h5>
-                            <p>Build strong graphic design skills, from typography to color theory, and learn how to apply these concepts.</p>
-                            <span class="fw-bold">4.6 ⭐</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card p-3">
-                        <span class="text-primary">Google Certified</span>
-                        <img src="assets/images/marketing.webp" class="img-fluid rounded my-2">
-                        <h5 class="fw-bold">Digital Marketing</h5>
-                        <p>Learn the essential techniques of digital marketing, including SEO, PPC, and content marketing.</p>
-                        <span class="fw-bold">4.7 ⭐</span>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card p-3">
-                        <span class="text-primary">JIRA Certified</span>
-                        <img src="assets/images/jira.png" class="img-fluid rounded my-2">
-                        <h5 class="fw-bold">Technical Consultation</h5>
-                        <p>Develop strong technical consultation skills, from problem analysis to solution implementation, and learn how to apply these strategies effectively.</p>
                         <span class="fw-bold">4.8 ⭐</span>
                     </div>
                 </div>
+
                 <div class="col-md-4 mb-4">
-                    <div class="card p-3">
+                    <div class="card card-data p-3 d-flex flex-column h-100">
+                        <span class="text-primary">Microsoft Certified</span>
+                        <a href="./courses-page/full_stack.html" class="text-decoration-none text-dark flex-grow-1">
+                            <img src="assets/images/full-stack.png" class="img-fluid rounded my-2">
+                            <h5 class="fw-bold">Full Stack Development</h5>
+                            <p>Master front-end and back-end development with projects in HTML, CSS, JavaScript, Database (MS SQL Server), C#, .NET Core Framework, APIs, MVC, and Design Patterns.</p>
+                        </a>
+                        <span class="fw-bold">4.5 ⭐</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-data p-3 d-flex flex-column h-100">
+                        <span class="text-primary">Adobe Certified</span>
+                        <a href="./courses-page/graphic.html" class="text-decoration-none text-dark flex-grow-1">
+                            <img src="assets/images/graphic-design.jpg" class="img-fluid rounded my-2">
+                            <h5 class="fw-bold">Graphic Foundation</h5>
+                            <p>Build strong graphic design skills, from typography to color theory, and learn how to apply these concepts.</p>
+                        </a>
+                        <span class="fw-bold">4.6 ⭐</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-data p-3 d-flex flex-column h-100">
+                        <span class="text-primary">Google Certified</span>
+                        <a href="#" class="text-decoration-none text-dark flex-grow-1">
+                            <img src="assets/images/marketing.webp" class="img-fluid rounded my-2">
+                            <h5 class="fw-bold">Digital Marketing</h5>
+                            <p>Learn the essential techniques of digital marketing, including SEO, PPC, and content marketing.</p>
+                        </a>
+                        <span class="fw-bold">4.7 ⭐</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-data p-3 d-flex flex-column h-100">
+                        <span class="text-primary">JIRA Certified</span>
+                        <a href="#" class="text-decoration-none text-dark flex-grow-1">
+                            <img src="assets/images/jira.png" class="img-fluid rounded my-2">
+                            <h5 class="fw-bold">Technical Consultation</h5>
+                            <p>Develop strong technical consultation skills, from problem analysis to solution implementation, and learn how to apply these strategies effectively.</p>
+                        </a>
+                        <span class="fw-bold">4.8 ⭐</span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card card-data p-3 d-flex flex-column h-100">
                         <span class="text-primary">Cisco Certified</span>
-                        <img src="assets/images/cyber-security.jpg" class="img-fluid rounded my-2">
-                        <h5 class="fw-bold">Cyber Security</h5>
-                        <p>Build strong cybersecurity skills, from threat analysis to risk mitigation, and learn how to apply these strategies effectively.</p>
+                        <a href="#" class="text-decoration-none text-dark flex-grow-1">
+                            <img src="assets/images/cyber-security.jpg" class="img-fluid rounded my-2">
+                            <h5 class="fw-bold">Cyber Security</h5>
+                            <p>Build strong cybersecurity skills, from threat analysis to risk mitigation, and learn how to apply these strategies effectively.</p>
+                        </a>
                         <span class="fw-bold">4.9 ⭐</span>
                     </div>
                 </div>

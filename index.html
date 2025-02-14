@@ -8,13 +8,259 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/styles.css">
     <style>
+        /* Make Mentor Bot & Calendar Equal in Height */
+        .d-flex.align-items-stretch > .col-md-6 {
+            display: flex;
+        }
+
+        /* Ensure all cards are flex containers */
+        .card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Align "Ask" button at the bottom */
+        .flex-grow-1 {
+            flex-grow: 1;
+        }
+
+        .align-self-end {
+            align-self: flex-end;
+        }
+
+        /* Compact Table Styling */
+        .compact-table th, .compact-table td {
+            padding: 1.5px !important;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .compact-table th {
+            font-weight: bold;
+        }
+
+        /* Highlight today's date */
         .today {
             background-color: #0088ff !important;
-            color: rgb(255, 255, 255) !important;
+            color: white !important;
             font-weight: bold !important;
             border-radius: 50% !important;
             text-align: center !important;
-        }        
+        }
+
+        .today:hover {
+            background-color: #72b1e9 !important;
+        }
+        
+        .task-card {
+            background-color: #f8f9fc;
+            border-radius: 12px;
+        }
+        
+        .task-card h5 {
+            font-size: 1.25rem;
+        }
+        
+        .task-card img {
+            width: 100%;
+            border-radius: 12px;
+        }
+        
+        .task-card ul {
+            padding: 0;
+        }
+        
+        .task-card ul li {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            padding: 8px 0;
+        }
+        
+        .task-card ul li span {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: #f3f4f6;
+            color: #333;
+            text-align: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .completed-task {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .active-task {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .deadline-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        
+        .progress {
+            flex-grow: 1;
+            height: 6px;
+            background: #dee2e6;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+        
+        .deadline-progress {
+            background: linear-gradient(to right, #007bff, #ff0000);
+        }
+        
+        .task-card button {
+            border-radius: 8px;
+            font-weight: bold;
+        }  
+
+        /* Styling for the enrolled courses section */
+        .enrolled-courses {
+            background-color: #f8f9fc;
+            border-radius: 12px;
+        }
+
+        /* Course Card Layout */
+        .course-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 12px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hover effect */
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Course Image */
+        .course-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Course Content */
+        .course-content {
+            display: flex;
+            flex-direction: column;
+            padding: 8px 0;
+        }
+
+        /* Course Category */
+        .course-content .category {
+            font-size: 14px;
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        /* Course Title */
+        .course-content h6 {
+            font-size: 16px;
+            color: #333;
+            margin: 6px 0;
+        }
+
+        /* Arrow Link */
+        .arrow-link {
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+            align-self: flex-end;
+            margin-top: -24px;
+        }
+
+        /* Card Styling */
+        .stats-card {
+            background-color: #f8f9fc;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        /* Header with Arrow */
+        .stats-card h5 {
+            font-size: 1.25rem;
+        }
+
+        .stats-arrow {
+            font-size: 18px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* Circular Progress Container */
+        .circle-progress {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 20px auto;
+        }
+
+        /* Circular Progress Bar Animation */
+        .progress-bar {
+            transition: stroke-dashoffset 1s ease-in-out;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+
+        /* Centering the Percentage & Text inside the Progress Circle */
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .progress-text .percentage {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .progress-text p {
+            font-size: 12px;
+            color: #6c757d;
+            margin: 4px 0 0;
+        }
+
+        /* Stats Breakdown */
+        .stats-breakdown {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        /* Individual Stat */
+        .stat-item {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Separator */
+        .stat-separator {
+            width: 1px;
+            height: 40px;
+            background-color: #d1d5db;
+        }
     </style>
     <link rel="stylesheet" href="assets/css/preloader.css">
 </head>
@@ -66,111 +312,217 @@
             <hr>
             <div class="row mt-5">
                 <!-- Statistics Card -->
-                <div class="col-md-4">
-                    <div class="card p-3 text-center">
-                        <h5>Statistics</h5>
-                        <hr>
+                <div class="col-md-3">
+                    <div class="card p-4 stats-card">
+                        <!-- Header with title and arrow -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold">Statistics</h5>
+                            <a href="#" class="stats-arrow">↗</a>
+                        </div>
+                
+                        <!-- Circular Progress Bar -->
                         <div class="circle-progress">
-                            <svg width="100" height="100" viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="40" stroke="#ddd" stroke-width="10" fill="none"></circle>
-                                <circle cx="50" cy="50" r="40" stroke="#007bff" stroke-width="10" fill="none" stroke-dasharray="251.2" stroke-dashoffset="62.8"></circle>
+                            <svg width="140" height="140" viewBox="0 0 100 100">
+                                <!-- Background Circle -->
+                                <circle cx="50" cy="50" r="45" stroke="#E5E7EB" stroke-width="8" fill="none"></circle>
+                                <!-- Progress Circle -->
+                                <circle class="progress-bar" cx="50" cy="50" r="45" stroke="#007bff" stroke-width="8" fill="none"
+                                    stroke-dasharray="282.6" stroke-dashoffset="282.6"></circle>
                             </svg>
-                            <h2>75%</h2>
+                            <div class="progress-text">
+                                <span class="percentage">75%</span>
+                                <p class="text-muted">Grades Completed</p>
+                            </div>
                         </div>
-                        <p>Tasks & Exam: 70%</p>
-                        <p>Quiz: 85%</p>
-                        <p>Absence: 90%</p>
+                
+                        <!-- Stats Breakdown -->
+                        <div class="stats-breakdown">
+                            <div class="stat-item">
+                                <p class="text-muted">Tasks & Exam</p>
+                                <span class="text-primary fw-bold">70%</span>
+                            </div>
+                            <div class="stat-separator"></div>
+                            <div class="stat-item">
+                                <p class="text-muted">Quiz</p>
+                                <span class="text-primary fw-bold">85%</span>
+                            </div>
+                            <div class="stat-separator"></div>
+                            <div class="stat-item">
+                                <p class="text-muted">Absence</p>
+                                <span class="text-primary fw-bold">90%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Mentor Bot -->
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <h5>Mentor Bot</h5>
-                        <hr>
-                        <div class="alert alert-primary">
-                            MentorBot Empowering Students through Internships, Marketing, Certification Courses, and Cybersecurity Workshops, etc.
+
+                <!-- Mentor Bot & Calendar (Same Height) -->
+                <div class="col-md-9">
+                    <div class="row d-flex align-items-stretch">
+                        <!-- Mentor Bot -->
+                        <div class="col-md-6 d-flex">
+                            <div class="card p-3 d-flex flex-column flex-fill">
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="align-self-center">Mentor Bot</h5>
+                                    <img src="./assets/images/robot.png" alt="mentor-bot" width="50">
+                                </div>
+                                <hr>
+                                <div class="alert alert-primary flex-grow-1">
+                                    MentorBot Empowering Students through Internships, Marketing, Certification Courses, and Cybersecurity Workshops, etc.
+                                </div>
+                                <button class="btn btn-primary">Ask</button>
+                            </div>
                         </div>
-                        <button class="btn btn-primary">Ask</button>
-                    </div>
-                </div>
-                
-                <!-- Calendar -->
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <h5>Calendar</h5>
-                        <div class="table-responsive">
-                            <div id="calendar"></div>
+            
+                        <!-- Calendar -->
+                        <div class="col-md-6 d-flex">
+                            <div class="card p-3 flex-fill">
+                                <h5>Calendar</h5>
+                                <div class="table-responsive">
+                                    <div id="calendar"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             
+            
             <div class="row mt-4">
                 <!-- Task & Deadline -->
-                <div class="col-md-4">
-                    <div class="card p-3">
-                        <h5>Task & Deadline</h5>
-                        <hr>
-                        <img src="assets/images/task-deadline.jpg" class="img-fluid rounded mb-2">
-                        <ul>
-                            <li>Understanding the tools in Figma</li>
-                            <li>Understand the basics of making designs</li>
-                            <li>Design a mobile application with Figma</li>
-                        </ul>
-                        <p>Deadline: <span class="text-danger">1 Hour</span></p>
-                        <button class="btn btn-primary">Go to Detail</button>
-                    </div>
-                </div>
+                <div class="col-md-3">
+                    <div class="card p-3 shadow-sm rounded-lg task-card">
+                        <!-- Card Header -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="fw-bold">Task & Deadline</h5>
+                            <span class="text-muted fs-4">⋯</span>
+                        </div>
                 
-                <!-- Enrolled Courses -->
+                        <!-- Image -->
+                        <img src="assets/images/task-deadline.jpg" class="img-fluid rounded mb-3">
+                
+                        <!-- Task Details -->
+                        <div class="d-flex justify-content-between">
+                            <h6 class="fw-bold">Detail Task</h6>
+                            <a href="#" class="text-primary text-decoration-none">UI/UX Designer</a>
+                        </div>
+                
+                        <!-- Task List -->
+                        <ul class="list-unstyled">
+                            <li class="completed-task">
+                                <span>1</span> Understanding the tools in Figma
+                            </li>
+                            <li class="completed-task">
+                                <span>2</span> Understand the basics of making designs
+                            </li>
+                            <li class="active-task">
+                                <span>3</span> Design a mobile application with Figma
+                            </li>
+                        </ul>
+                
+                        <!-- Deadline Section -->
+                        <div class="d-flex justify-content-between">
+                            <h6 class="fw-bold">Deadline</h6>
+                            <span class="text-danger fw-bold">1 Hour</span>
+                        </div>
+                        <div class="deadline-bar">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped deadline-progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                
+                        <!-- Go To Detail Button -->
+                        <button class="btn btn-primary w-100 mt-3">Go To Detail</button>
+                    </div>
+                </div>                
+                
+                <!-- Enrolled Courses Section -->
                 <div class="col-md-8">
-                    <div class="card p-3">
-                        <h5>Enrolled Courses</h5>
-                        <hr>
-                        <div class="d-flex flex-wrap">
-                            <div class="course-item m-2">
-                                <a href="./courses-page/ui_ux.html" class="text-decoration-none" style="color: inherit;">
-                                    <img src="assets/images/ui-ux.webp" class="img-fluid rounded w-75">
-                                    <p>UI/UX Design</p>
-                                </a>
+                    <div class="card p-4 enrolled-courses">
+                        <h5 class="fw-bold">Enrolled Courses</h5>
+                        <div class="row g-4">
+                            <!-- Course 1: UI/UX - Wire Framing -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="course-card">
+                                    <img src="assets/images/ui-ux.webp" class="course-image">
+                                    <div class="course-content">
+                                        <a href="#" class="category">UI/UX</a>
+                                        <h6 class="fw-bold">Wire Framing</h6>
+                                        <a href="#" class="arrow-link">↗</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/js.png" class="img-fluid rounded w-75">
-                                <p>Web Development - JavaScript</p>
+
+                            <!-- Course 2: Web Development - JavaScript OOP -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="course-card">
+                                    <img src="assets/images/js.png" class="course-image">
+                                    <div class="course-content">
+                                        <a href="#" class="category">Web Development</a>
+                                        <h6 class="fw-bold">JavaScript OOP</h6>
+                                        <a href="#" class="arrow-link">↗</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/python.png" class="img-fluid rounded w-50">
-                                <p>Python Fundamentals</p>
+
+                            <!-- Course 3: Blockchain - What is Chain? -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="course-card">
+                                    <img src="assets/images/python.png" class="course-image">
+                                    <div class="course-content">
+                                        <a href="#" class="category">Blockchain</a>
+                                        <h6 class="fw-bold">What is Chain?</h6>
+                                        <a href="#" class="arrow-link">↗</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/digital-marketing.jpeg" class="img-fluid rounded w-75">
-                                <p>Digital Marketing</p>
+
+                            <!-- Course 4: Marketing - Marketing Plan B -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="course-card">
+                                    <img src="assets/images/digital-marketing.jpeg" class="course-image">
+                                    <div class="course-content">
+                                        <a href="#" class="category">Marketing</a>
+                                        <h6 class="fw-bold">Marketing Plan B</h6>
+                                        <a href="#" class="arrow-link">↗</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/fin-tech.webp" class="img-fluid rounded w-75">
-                                <p>Fin Tech</p>
+
+                            <!-- Course 5: AI - Prompt Engineering -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="course-card">
+                                    <img src="assets/images/fin-tech.webp" class="course-image">
+                                    <div class="course-content">
+                                        <a href="#" class="category">AI</a>
+                                        <h6 class="fw-bold">Prompt Engineering</h6>
+                                        <a href="#" class="arrow-link">↗</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/java.png" class="img-fluid rounded w-75">
-                                <p>Java Fundamentals & OOP</p>
-                            </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/c-sharp.jpg" class="img-fluid rounded w-75">
-                                <p>Introduction to C#</p>
-                            </div>
-                            <div class="course-item m-2">
-                                <img src="assets/images/html-css.webp" class="img-fluid rounded w-75">
-                                <p>HTML & CSS</p>
+
+                            <!-- Course 6: UI/UX - Auto Layout -->
+                            <div class="col-md-4 col-sm-6">
+                                <div class="course-card">
+                                    <img src="assets/images/java.png" class="course-image">
+                                    <div class="course-content">
+                                        <a href="#" class="category">UI/UX</a>
+                                        <h6 class="fw-bold">Auto Layout</h6>
+                                        <a href="#" class="arrow-link">↗</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             
             <div class="row mt-4">
                 <!-- Top Courses -->
-                <div class="col-md-12">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-8">
                     <div class="card p-3">
                         <h5>Top Courses</h5>
                         <h6 class="text-secondary">Top in 2024</h6>
@@ -179,22 +531,22 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th class="w-25">Rank</th>
-                                        <th class="w-25">Name</th>
+                                        <th>Rank</th>
+                                        <th class="w-50">Name</th>
                                         <th>Hours</th>
                                         <th>Rate</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="w-25">1</td>
-                                        <td class="w-25"><img src="assets/images/html-css.webp" id="top-course-item" class="rounded"> HTML & CSS</td>
+                                        <td>1</td>
+                                        <td><img src="assets/images/html-css.webp" id="top-course-item" class="rounded"> HTML & CSS</td>
                                         <td>28</td>
                                         <td>4.3</td>
                                     </tr>
                                     <tr>
-                                        <td class="w-25">2</td>
-                                        <td class="w-25">
+                                        <td>2</td>
+                                        <td>
                                             <a href="./courses-page/ui_ux.html" class="text-decoration-none" style="color: inherit;">
                                                 <img src="assets/images/ui-ux.webp" id="top-course-item" class="rounded"> UI/UX Design
                                             </a>
@@ -232,6 +584,16 @@
                 document.getElementById("preloader").style.display = "none";
             }, 1000);
         };
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const progressCircle = document.querySelector('.progress-bar');
+            const percentage = 75;
+            const circumference = 282.6;
+            const offset = circumference - (percentage / 100) * circumference;
+        
+            progressCircle.style.strokeDashoffset = offset;
+        });        
     </script>
 </body>
 </html>
