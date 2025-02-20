@@ -7,282 +7,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/styles.css">
-    <style>
-        /* Make Mentor Bot & Calendar Equal in Height */
-        .d-flex.align-items-stretch > .col-md-6 {
-            display: flex;
-        }
-
-        /* Ensure all cards are flex containers */
-        .card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Align "Ask" button at the bottom */
-        .flex-grow-1 {
-            flex-grow: 1;
-        }
-
-        .align-self-end {
-            align-self: flex-end;
-        }
-
-        /* Compact Table Styling */
-        .compact-table th, .compact-table td {
-            padding: 1.5px !important;
-            font-size: 12px;
-            text-align: center;
-        }
-
-        .compact-table th {
-            font-weight: bold;
-        }
-
-        /* Highlight today's date */
-        .today {
-            background-color: #0088ff !important;
-            color: white !important;
-            font-weight: bold !important;
-            border-radius: 50% !important;
-            text-align: center !important;
-        }
-
-        .today:hover {
-            background-color: #72b1e9 !important;
-        }
-
-        
-        .task-card ul li span {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background: #f3f4f6;
-            color: #333;
-            text-align: center;
-            border-radius: 50%;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        .task-card button {
-            border-radius: 8px;
-            font-weight: bold;
-        } 
-
-        /* task & deadline */
-        /* Ensure all cards are flex containers */
-        .card {
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Task Card Styling */
-        .task-card {
-            background-color: #f8f9fc;
-            border-radius: 12px;
-        }
-
-        .task-card h5 {
-            font-size: 1.25rem;
-        }
-
-        .task-card img {
-            width: 100%;
-            border-radius: 12px;
-        }
-
-        .task-card ul {
-            padding: 0;
-        }
-
-        .task-card ul li {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-            padding: 8px 0;
-        }
-
-        .task-card ul li span {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            background: #f3f4f6;
-            color: #333;
-            text-align: center;
-            border-radius: 50%;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .completed-task {
-            text-decoration: line-through;
-            color: #999;
-        }
-
-        .active-task {
-            font-weight: bold;
-            color: #333;
-        }
-
-        /* Fixed Progress Bar */
-        .deadline-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        /* Progress Container */
-        .progress {
-            flex-grow: 1;
-            height: 8px;
-            border-radius: 6px;
-            background: #e0e0e0;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Dynamic Gradient Progress Bar */
-        #deadline-progress {
-            width: 80%; /* Default progress */
-            height: 100%;
-            background: linear-gradient(to right, #007bff, #8a2be2, #ff0000);
-            border-radius: 6px;
-            transition: width 0.5s ease-in-out;
-        }
-
-        /* Red Circular Indicator */
-        #progress-indicator {
-            position: absolute;
-            top: -3px;
-            left: calc(80% - 7px); /* Moves the red dot dynamically */
-            width: 14px;
-            height: 14px;
-            background-color: red;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        /* Styling for the enrolled courses section */
-        .enrolled-courses {
-            background-color: #f8f9fc;
-            border-radius: 12px;
-        }
-
-        /* Course Card Layout */
-        .course-card {
-            background-color: white;
-            border-radius: 12px;
-            padding: 12px;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hover effect */
-        .course-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Course Image */
-        .course-image {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        /* Course Content */
-        .course-content {
-            display: flex;
-            flex-direction: column;
-            padding: 8px 0;
-        }
-
-        /* Course Category */
-        .course-content .category {
-            font-size: 14px;
-            font-weight: bold;
-            color: #007bff;
-            text-decoration: none;
-        }
-
-        /* Course Title */
-        .course-content h6 {
-            font-size: 16px;
-            color: #333;
-            margin: 6px 0;
-        }
-
-        /* Arrow Link */
-        .arrow-link {
-            font-size: 18px;
-            color: #007bff;
-            text-decoration: none;
-            align-self: flex-end;
-            margin-top: -24px;
-        }
-
-        /* Card Styling */
-        .stats-card {
-            background-color: #f8f9fc;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        /* Header with Arrow */
-        .stats-card h5 {
-            font-size: 1.25rem;
-        }
-
-        .stats-arrow {
-            font-size: 18px;
-            color: #333;
-            text-decoration: none;
-        }
-
-        /* Circular Progress Container */
-        .circle-progress {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 20px auto;
-        }
-
-        .progress-text .percentage {
-            font-size: 24px;
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .progress-text p {
-            font-size: 12px;
-            color: #6c757d;
-            margin: 4px 0 0;
-        }
-
-        /* Stats Breakdown */
-        .stats-breakdown {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-        /* Individual Stat */
-        .stat-item {
-            text-align: center;
-            font-size: 14px;
-        }
-
-        /* Separator */
-        .stat-separator {
-            width: 1px;
-            height: 40px;
-            background-color: #d1d5db;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/index.css">
     <link rel="stylesheet" href="assets/css/preloader.css">
 </head>
 <body>
@@ -373,6 +98,48 @@
                                 <span class="text-primary fw-bold">90%</span>
                             </div>
                         </div>
+
+                        <!-- More Detail Button -->
+                        <div class="mt-3">
+                            <button id="showStatsModal" class="btn btn-primary w-100">More Detail</button>
+                        </div>
+
+                        <!-- Statistics Modal -->
+                        <div id="statsModal" class="modal fade" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content stats-modal p-4">
+                                    <!-- Modal Header -->
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="modal-title fw-bold text-primary">Statistics</h4>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+
+                                    <!-- Knowledge Gross Chart -->
+                                    <div class="bg-white p-3 rounded mt-4 shadow-sm">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="fw-bold mb-0">Knowledge Gross</h6>
+                                            <button class="btn btn-light btn-sm">This Week</button>
+                                        </div>
+                                        <canvas id="knowledgeChart" class="mt-3"></canvas>
+                                    </div>
+
+                                    <!-- Quizzes Section -->
+                                    <div class="bg-white p-3 rounded mt-3 shadow-sm">
+                                        <h6 class="fw-bold">Quizzes</h6>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="text-center">
+                                                <canvas id="quizChart1" width="70" height="70"></canvas>
+                                                <p class="mt-2 text-muted small">Attempt Quizzes</p>
+                                            </div>
+                                            <div class="text-center">
+                                                <canvas id="quizChart2" width="70" height="70"></canvas>
+                                                <p class="mt-2 text-muted small">Average Marks</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -458,6 +225,90 @@
 
                         <!-- Go To Detail Button -->
                         <button class="btn btn-primary w-100 mt-3">Go To Detail</button>
+                    </div>
+                </div>
+                
+                <!-- Task & Deadline Modal -->
+                <div id="taskDetailModal" class="modal fade" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content p-4">
+                            <!-- Modal Header -->
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="modal-title fw-bold text-primary">Task & Deadline</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+
+                            <!-- Dropdown Selection -->
+                            <div class="mt-3">
+                                <select class="form-select w-auto">
+                                    <option selected>UX Research</option>
+                                    <option>UI Design</option>
+                                    <option>Frontend Development</option>
+                                </select>
+                            </div>
+
+                            <!-- Deadline Progress Indicators -->
+                            <div class="d-flex justify-content-between text-center mt-4">
+                                <div class="progress-circle">
+                                    <h6 class="text-secondary">Deadline 1</h6>
+                                    <div class="progress-modal">
+                                        <span class="progress-value">90%</span>
+                                    </div>
+                                    <p class="text-muted">12/26</p>
+                                </div>
+                                <div class="progress-circle">
+                                    <h6 class="text-secondary">Deadline 2</h6>
+                                    <div class="progress-modal">
+                                        <span class="progress-value">75%</span>
+                                    </div>
+                                    <p class="text-muted">12/26</p>
+                                </div>
+                                <div class="progress-circle">
+                                    <h6 class="text-secondary">Deadline 3</h6>
+                                    <div class="progress-modal">
+                                        <span class="progress-value">70%</span>
+                                    </div>
+                                    <p class="text-muted">12/26</p>
+                                </div>
+                                <div class="progress-circle">
+                                    <h6 class="text-secondary">Deadline 4</h6>
+                                    <div class="progress-modal">
+                                        <span class="progress-value">60%</span>
+                                    </div>
+                                    <p class="text-muted">12/26</p>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <!-- Task List -->
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Tasks</h6>
+                                    <ul class="list-unstyled">
+                                        <li><input type="checkbox" checked disabled> <del>Set a reminder beforehand</del></li>
+                                        <li><input type="checkbox" checked disabled> <del>Find a location</del></li>
+                                        <li><input type="checkbox"> Screenshot the address</li>
+                                        <li><input type="checkbox"> Book the tickets</li>
+                                        <li><input type="checkbox"> Find out the parking</li>
+                                        <li><input type="checkbox"> Call them</li>
+                                    </ul>
+                                </div>
+
+                                <!-- <hr> -->
+
+                                <!-- File Upload Section -->
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold">Upload</h6>
+                                    <div class="upload-box text-center border p-3">
+                                        <label for="fileUpload" class="btn btn-primary">Upload Files</label>
+                                        <input type="file" id="fileUpload" class="d-none" multiple>
+                                        <p class="text-muted mt-2">Supported formats: JPEG, PNG, GIF, MP4, PDF, PSD, AI, Word, PPT</p>
+                                        <p id="file-name" class="text-primary mt-1"></p>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -617,15 +468,74 @@
         document.addEventListener("DOMContentLoaded", function () {
             const progressBar = document.getElementById("deadline-progress");
             const progressIndicator = document.getElementById("progress-indicator");
-
             let progressPercentage = 80; // Change this dynamically if needed
-
             // Update progress bar width
             progressBar.style.width = progressPercentage + "%";
-
             // Move red circular indicator to the correct position
             progressIndicator.style.left = `calc(${progressPercentage}% - 7px)`;
+
+
+            // -------------------- Select the "Go To Detail" button
+            const goToDetailButton = document.querySelector(".task-card button");
+            // Show the modal when the button is clicked
+            goToDetailButton.addEventListener("click", function () {
+                var myModal = new bootstrap.Modal(document.getElementById('taskDetailModal'));
+                myModal.show();
+            });
+
+
+            // -------------------- Display file name
+            const fileInput = document.getElementById("fileUpload");
+            const fileNameDisplay = document.getElementById("file-name");
+
+            fileInput.addEventListener("change", function () {
+                if (fileInput.files.length > 0) {
+                    fileNameDisplay.textContent = "Selected File: " + fileInput.files[0].name;
+                } else {
+                    fileNameDisplay.textContent = "";
+                }
+            });
+
+            // -------------------- Show modal when "More Detail" button is clicked
+            document.getElementById("showStatsModal").addEventListener("click", function () {
+                var myModal = new bootstrap.Modal(document.getElementById('statsModal'));
+                myModal.show();
+            });
+        
+            // Line Chart for Knowledge Gross
+            new Chart(document.getElementById('knowledgeChart').getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
+                    datasets: [{
+                        label: 'Progress',
+                        data: [72, 81, 90, 77, 85, 80, 88, 92],
+                        borderColor: '#007bff',
+                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
+                        fill: true
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false }
+            });
+        
+            // Small Quiz Attempt Chart
+            new Chart(document.getElementById('quizChart1').getContext('2d'), {
+                type: 'doughnut',
+                data: { datasets: [{ data: [70, 30], backgroundColor: ['#007bff', '#e0e0e0'] }] },
+                options: { cutoutPercentage: 75 }
+            });
+        
+            // Small Average Marks Chart
+            new Chart(document.getElementById('quizChart2').getContext('2d'), {
+                type: 'doughnut',
+                data: { datasets: [{ data: [25, 75], backgroundColor: ['#007bff', '#e0e0e0'] }] },
+                options: { cutoutPercentage: 75 }
+            });
         });
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
+
+
+
