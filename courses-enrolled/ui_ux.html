@@ -93,11 +93,222 @@
                     </li>
                 </ul>
             </div>
+
+            <!-- Quiz -->
+            <div class="quiz-container mt-4">
+                <h2 class="text-primary text-center">Quiz for Lesson <span class="text-info">1-2</span></h2>
+
+                <!-- Start Quiz Button -->
+                <div class="text-center mb-3">
+                    <button class="btn btn-success px-4" id="startQuiz">Start Quiz</button>
+                </div>
+
+                <!-- Timer (Hidden by Default) -->
+                <div class="text-end me-4" id="quiz-timer-container" style="display: none;">
+                    <span class="badge bg-primary fs-5" id="quiz-timer">30:00</span>
+                </div>
+
+                <!-- Quiz Questions (Hidden by Default) -->
+                <div class="mt-3" id="quiz-questions" style="display: none;">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fw-bold">1</span> Lorem ipsum dolor sit amet
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a1">
+                                    <label class="form-check-label" for="q1a1">Lorem ipsum dolor sit amet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a2">
+                                    <label class="form-check-label" for="q1a2">Lorem ipsum dolor sit</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a3">
+                                    <label class="form-check-label" for="q1a3">Lorem ipsum dolor sit amet consectetur</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fw-bold">2</span> Lorem ipsum dolor sit amet consectetur.
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a1">
+                                    <label class="form-check-label" for="q2a1">Lorem ipsum dolor sit amet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a2">
+                                    <label class="form-check-label" for="q2a2">Lorem ipsum dolor sit amet consectetur</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a3">
+                                    <label class="form-check-label" for="q2a3">Lorem ipsum dolor sit</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fw-bold">3</span> Lorem ipsum dolor sit amet consectetur.
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a1">
+                                    <label class="form-check-label" for="q3a1">Lorem ipsum dolor sit amet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a2">
+                                    <label class="form-check-label" for="q3a2">Lorem ipsum dolor sit amet consectetur</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a3">
+                                    <label class="form-check-label" for="q3a3">Lorem ipsum dolor sit</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Finish Button -->
+                    <div class="text-center mb-3">
+                        <button class="btn btn-primary px-5" id="finishQuiz">Finish</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Quiz timer -->
+    <script>
+        let totalTime = 30 * 60; // Set total quiz time (30 minutes)
+        let timeLeft = totalTime;
+        let timer; // Variable to store the timer
+    
+        // Correct Answers (Define correct options)
+        const correctAnswers = {
+            q1: "q1a1", // Correct answer for Question 1
+            q2: "q2a2", // Correct answer for Question 2
+            q3: "q3a3"  // Correct answer for Question 3
+        };
+    
+        // Start Quiz Button Click Event
+        document.getElementById("startQuiz").addEventListener("click", function () {
+            let confirmStart = confirm("Are you ready to start the quiz? Once started, the timer cannot be paused.");
+            if (confirmStart) {
+                // Hide Start Button
+                document.getElementById("startQuiz").style.display = "none";
+    
+                // Show Timer and Questions
+                document.getElementById("quiz-timer-container").style.display = "block";
+                document.getElementById("quiz-questions").style.display = "block";
+    
+                // Start Timer
+                timer = setInterval(updateTimer, 1000);
+            }
+        });
+    
+        // Timer Function
+        function updateTimer() {
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            let timerElement = document.getElementById("quiz-timer");
+    
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            
+            // Change timer color to red when there are 30 seconds left
+            if (timeLeft <= 30) {
+                timerElement.classList.remove("bg-primary");
+                timerElement.classList.add("bg-danger");
+            }
+    
+            // Stop Timer & Submit Quiz if Time Runs Out
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert("Time is up! Submitting quiz...");
+                document.getElementById("finishQuiz").click();
+                return;
+            }
+    
+            timeLeft--; // Decrease time
+        }
+    
+        // Handle Quiz Submission
+        document.getElementById("finishQuiz").addEventListener("click", function () {
+            clearInterval(timer);
+    
+            let timerElement = document.getElementById("quiz-timer");
+    
+            if (timeLeft <= 0) {
+                timerElement.classList.add("bg-danger"); // Keep it red when 00:00
+            } else {
+                timerElement.classList.remove("bg-primary", "bg-danger");
+                timerElement.classList.add("bg-success"); // Green only if finished manually
+            }
+    
+            // Calculate Quiz Results
+            let correctCount = 0;
+            let unansweredCount = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+    
+            for (let q in correctAnswers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (!selected) {
+                    unansweredCount++;
+                } else if (selected.id === correctAnswers[q]) {
+                    correctCount++;
+                }
+            }
+    
+            let timeTaken = totalTime - timeLeft;
+            let timeTakenMinutes = Math.floor(timeTaken / 60);
+            let timeTakenSeconds = timeTaken % 60;
+    
+            // Show Completion Message BELOW THE TIMER
+            let messageDiv = document.createElement("div");
+            messageDiv.className = "alert alert-success text-center mt-3";
+            messageDiv.textContent = "🎉 Quiz Completed Successfully!";
+            
+            let timerContainer = document.getElementById("quiz-timer-container");
+            timerContainer.parentNode.insertBefore(messageDiv, timerContainer.nextSibling);
+    
+            // Show Quick Report BELOW COMPLETION MESSAGE
+            let reportDiv = document.createElement("div");
+            reportDiv.className = "alert alert-info text-center mt-2";
+            reportDiv.innerHTML = `
+                <strong>📊 Quiz Report:</strong><br>
+                ✅ Correct Answers: ${correctCount} / ${totalQuestions} <br>
+                ⏳ Time Taken: ${timeTakenMinutes}m ${timeTakenSeconds}s <br>
+                ❓ Unanswered Questions: ${unansweredCount}
+            `;
+            messageDiv.parentNode.insertBefore(reportDiv, messageDiv.nextSibling);
+    
+            // Disable Quiz Questions to Prevent Further Changes
+            document.querySelectorAll(".form-check-input").forEach(input => {
+                input.disabled = true;
+            });
+    
+            // Disable Finish Button (Make it Faded & Non-Clickable)
+            let finishBtn = document.getElementById("finishQuiz");
+            finishBtn.disabled = true;
+            finishBtn.style.pointerEvents = "none";
+            finishBtn.style.cursor = "not-allowed";
+            finishBtn.classList.remove("btn-primary");
+            finishBtn.classList.add("btn-secondary", "opacity-50");
+        });
+    </script>       
 
     <!-- Preloader Hide Script -->
     <script>
