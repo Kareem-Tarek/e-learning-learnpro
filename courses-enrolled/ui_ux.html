@@ -105,7 +105,7 @@
 
                 <!-- Timer (Hidden by Default) -->
                 <div class="text-end me-4" id="quiz-timer-container" style="display: none;">
-                    <span class="badge bg-primary fs-5" id="quiz-timer">30:00</span>
+                    <span class="badge bg-primary fs-5" id="quiz-timer">15:00</span>
                 </div>
 
                 <!-- Quiz Questions (Hidden by Default) -->
@@ -191,9 +191,9 @@
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Quiz timer -->
+    <!-- Quiz Operation & Timer -->
     <script>
-        let totalTime = 30 * 60; // Set total quiz time (30 minutes)
+        let totalTime = 15 * 60; // Set total quiz time (15 minutes)
         let timeLeft = totalTime;
         let timer; // Variable to store the timer
     
@@ -208,15 +208,10 @@
         document.getElementById("startQuiz").addEventListener("click", function () {
             let confirmStart = confirm("Are you ready to start the quiz? Once started, the timer cannot be paused.");
             if (confirmStart) {
-                // Hide Start Button
-                document.getElementById("startQuiz").style.display = "none";
-    
-                // Show Timer and Questions
-                document.getElementById("quiz-timer-container").style.display = "block";
-                document.getElementById("quiz-questions").style.display = "block";
-    
-                // Start Timer
-                timer = setInterval(updateTimer, 1000);
+                document.getElementById("startQuiz").style.display = "none"; // Hide Start Button
+                document.getElementById("quiz-timer-container").style.display = "block"; // Show Timer
+                document.getElementById("quiz-questions").style.display = "block"; // Show Questions
+                timer = setInterval(updateTimer, 1000); // Start Timer
             }
         });
     
@@ -228,7 +223,7 @@
     
             timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
             
-            // Change timer color to red when there are 30 seconds left
+            // Change timer color to red when 30 seconds left
             if (timeLeft <= 30) {
                 timerElement.classList.remove("bg-primary");
                 timerElement.classList.add("bg-danger");
@@ -252,10 +247,10 @@
             let timerElement = document.getElementById("quiz-timer");
     
             if (timeLeft <= 0) {
-                timerElement.classList.add("bg-danger"); // Keep it red when 00:00
+                timerElement.classList.add("bg-danger"); // Keep red if time ran out
             } else {
                 timerElement.classList.remove("bg-primary", "bg-danger");
-                timerElement.classList.add("bg-success"); // Green only if finished manually
+                timerElement.classList.add("bg-success"); // Green if finished manually
             }
     
             // Calculate Quiz Results
@@ -272,6 +267,9 @@
                 }
             }
     
+            // ✅ FIX: The percentage is now calculated based on TOTAL QUESTIONS, not just answered ones.
+            let percentage = Math.round((correctCount / totalQuestions) * 100);
+    
             let timeTaken = totalTime - timeLeft;
             let timeTakenMinutes = Math.floor(timeTaken / 60);
             let timeTakenSeconds = timeTaken % 60;
@@ -284,14 +282,31 @@
             let timerContainer = document.getElementById("quiz-timer-container");
             timerContainer.parentNode.insertBefore(messageDiv, timerContainer.nextSibling);
     
-            // Show Quick Report BELOW COMPLETION MESSAGE
+            // Show Report in Table Format BELOW COMPLETION MESSAGE
             let reportDiv = document.createElement("div");
-            reportDiv.className = "alert alert-info text-center mt-2";
+            reportDiv.className = "mt-3";
             reportDiv.innerHTML = `
-                <strong>📊 Quiz Report:</strong><br>
-                ✅ Correct Answers: ${correctCount} / ${totalQuestions} <br>
-                ⏳ Time Taken: ${timeTakenMinutes}m ${timeTakenSeconds}s <br>
-                ❓ Unanswered Questions: ${unansweredCount}
+                <h5 class="text-center text-primary">📊 Quiz Report</h5>
+                <table class="table table-bordered text-center">
+                    <tbody>
+                        <tr>
+                            <th class="bg-dark text-white">✅ Correct Answers</th>
+                            <td>${correctCount} / ${totalQuestions}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">🎯 Score Percentage</th>
+                            <td>${percentage}%</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">⏳ Time Taken</th>
+                            <td>${timeTakenMinutes}m ${timeTakenSeconds}s</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">❓ Unanswered Questions</th>
+                            <td>${unansweredCount}</td>
+                        </tr>
+                    </tbody>
+                </table>
             `;
             messageDiv.parentNode.insertBefore(reportDiv, messageDiv.nextSibling);
     
@@ -308,8 +323,8 @@
             finishBtn.classList.remove("btn-primary");
             finishBtn.classList.add("btn-secondary", "opacity-50");
         });
-    </script>       
-
+    </script>
+    
     <!-- Preloader Hide Script -->
     <script>
         window.onload = function() {
