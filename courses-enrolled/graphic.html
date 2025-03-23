@@ -54,7 +54,7 @@
     </div>
     
     <!-- Course Content Section -->
-    <div class="container">
+    <div class="container mb-5">
         <h2 class="text-primary">Graphic Foundation</h2>
         
         <div class="row mt-4">
@@ -70,119 +70,148 @@
             
             <!-- Lessons Sidebar -->
             <div class="col-md-4">
-                <h5 class="text-primary">Chapter 1 Lessons</h5>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6>Title Line I</h6>
-                            <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                        </div>
-                        <span class="badge bg-primary">▶</span>
-                    </li>
-                    <li class="list-group-item">
-                        <h6>Title Line II</h6>
-                        <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                    </li>
-                    <li class="list-group-item">
-                        <h6>Title Line III</h6>
-                        <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                    </li>
-                    <li class="list-group-item">
-                        <h6>Title Line IV</h6>
-                        <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Quiz -->
-            <div class="quiz-container mt-4">
-                <h2 class="text-primary text-center">Quiz for Lesson <span class="text-info">1-2</span></h2>
-
-                <!-- Start Quiz Button -->
-                <div class="text-center mb-3">
-                    <button class="btn btn-success px-4" id="startQuiz">Start Quiz</button>
-                </div>
-
-                <!-- Timer (Hidden by Default) -->
-                <div class="text-end me-4" id="quiz-timer-container" style="display: none;">
-                    <span class="badge bg-primary fs-5" id="quiz-timer">15:00</span>
-                </div>
-
-                <!-- Quiz Questions (Hidden by Default) -->
-                <div class="mt-3" id="quiz-questions" style="display: none;">
-                    <!-- Question 1 -->
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fw-bold">1</span> Lorem ipsum dolor sit amet
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q1" id="q1a1">
-                                    <label class="form-check-label" for="q1a1">Lorem ipsum dolor sit amet</label>
+                <h5 class="text-primary">Course Chapters</h5>
+                
+                <div class="accordion" id="graphicChaptersAccordion">
+                    <!-- Chapter 1: Introduction to Graphic Design -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="graphicHeadingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseOne" aria-expanded="true" aria-controls="graphicCollapseOne">
+                                Chapter 1: Introduction to Graphic Design
+                            </button>
+                        </h2>
+                        <div id="graphicCollapseOne" class="accordion-collapse collapse show" aria-labelledby="graphicHeadingOne" data-bs-parent="#graphicChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: What is Graphic Design?</li>
+                                    <li class="list-group-item">Lesson 2: History of Graphic Design</li>
+                                    <li class="list-group-item">Lesson 3: Principles of Design</li>
+                                    <li class="list-group-item">Lesson 4: Elements of Design</li>
+                                    <li class="list-group-item">Lesson 5: Color Theory Basics</li>
+                                    <li class="list-group-item">Lesson 6: Typography Fundamentals</li>
+                                    <li class="list-group-item">Lesson 7: Understanding Visual Hierarchy</li>
+                                    <li class="list-group-item">Lesson 8: Layout and Composition</li>
+                                    <li class="list-group-item">Lesson 9: The Role of White Space</li>
+                                    <li class="list-group-item">Lesson 10: Creating a Simple Poster</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="./quizzes/graphic-chapter_1.html">Go to Quiz Section for Chapter 1</a>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q1" id="q1a2">
-                                    <label class="form-check-label" for="q1a2">Lorem ipsum dolor sit</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q1" id="q1a3">
-                                    <label class="form-check-label" for="q1a3">Lorem ipsum dolor sit amet consectetur</label>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Question 2 -->
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fw-bold">2</span> Lorem ipsum dolor sit amet consectetur.
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q2" id="q2a1">
-                                    <label class="form-check-label" for="q2a1">Lorem ipsum dolor sit amet</label>
+                    <!-- Chapter 2: Graphic Design Tools -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="graphicHeadingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseTwo" aria-expanded="false" aria-controls="graphicCollapseTwo">
+                                Chapter 2: Graphic Design Tools
+                            </button>
+                        </h2>
+                        <div id="graphicCollapseTwo" class="accordion-collapse collapse" aria-labelledby="graphicHeadingTwo" data-bs-parent="#graphicChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Introduction to Adobe Photoshop</li>
+                                    <li class="list-group-item">Lesson 2: Introduction to Adobe Illustrator</li>
+                                    <li class="list-group-item">Lesson 3: Working with Layers</li>
+                                    <li class="list-group-item">Lesson 4: Using Selection Tools</li>
+                                    <li class="list-group-item">Lesson 5: Basic Photo Editing</li>
+                                    <li class="list-group-item">Lesson 6: Creating Vector Graphics</li>
+                                    <li class="list-group-item">Lesson 7: Understanding Paths & Shapes</li>
+                                    <li class="list-group-item">Lesson 8: Exporting Designs Properly</li>
+                                    <li class="list-group-item">Lesson 9: Graphic Design Workflows</li>
+                                    <li class="list-group-item">Lesson 10: Creating a Business Card</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 2</a>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q2" id="q2a2">
-                                    <label class="form-check-label" for="q2a2">Lorem ipsum dolor sit amet consectetur</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q2" id="q2a3">
-                                    <label class="form-check-label" for="q2a3">Lorem ipsum dolor sit</label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Question 3 -->
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fw-bold">3</span> Lorem ipsum dolor sit amet consectetur.
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q3" id="q3a1">
-                                    <label class="form-check-label" for="q3a1">Lorem ipsum dolor sit amet</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q3" id="q3a2">
-                                    <label class="form-check-label" for="q3a2">Lorem ipsum dolor sit amet consectetur</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q3" id="q3a3">
-                                    <label class="form-check-label" for="q3a3">Lorem ipsum dolor sit</label>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Finish Button -->
-                    <div class="text-center mb-3">
-                        <button class="btn btn-primary px-5" id="finishQuiz">Finish</button>
+                    <!-- Chapter 3: Branding & Identity Design -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="graphicHeadingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseThree" aria-expanded="false" aria-controls="graphicCollapseThree">
+                                Chapter 3: Branding & Identity Design
+                            </button>
+                        </h2>
+                        <div id="graphicCollapseThree" class="accordion-collapse collapse" aria-labelledby="graphicHeadingThree" data-bs-parent="#graphicChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Understanding Branding</li>
+                                    <li class="list-group-item">Lesson 2: Creating a Brand Identity</li>
+                                    <li class="list-group-item">Lesson 3: Logo Design Principles</li>
+                                    <li class="list-group-item">Lesson 4: Typography in Branding</li>
+                                    <li class="list-group-item">Lesson 5: Choosing the Right Colors</li>
+                                    <li class="list-group-item">Lesson 6: Designing Business Collateral</li>
+                                    <li class="list-group-item">Lesson 7: Creating Social Media Graphics</li>
+                                    <li class="list-group-item">Lesson 8: Understanding Print vs. Digital</li>
+                                    <li class="list-group-item">Lesson 9: Packaging Design Basics</li>
+                                    <li class="list-group-item">Lesson 10: Final Brand Presentation</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 3</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Chapter 4: Digital Illustration -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="graphicHeadingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseFour" aria-expanded="false" aria-controls="graphicCollapseFour">
+                                Chapter 4: Digital Illustration
+                            </button>
+                        </h2>
+                        <div id="graphicCollapseFour" class="accordion-collapse collapse" aria-labelledby="graphicHeadingFour" data-bs-parent="#graphicChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Introduction to Digital Illustration</li>
+                                    <li class="list-group-item">Lesson 2: Sketching with a Tablet</li>
+                                    <li class="list-group-item">Lesson 3: Using Vector & Raster Graphics</li>
+                                    <li class="list-group-item">Lesson 4: Shading & Color Blending</li>
+                                    <li class="list-group-item">Lesson 5: Character Design Basics</li>
+                                    <li class="list-group-item">Lesson 6: Concept Art Techniques</li>
+                                    <li class="list-group-item">Lesson 7: Creating Background Illustrations</li>
+                                    <li class="list-group-item">Lesson 8: Advanced Brushes & Textures</li>
+                                    <li class="list-group-item">Lesson 9: Creating a Full Digital Artwork</li>
+                                    <li class="list-group-item">Lesson 10: Portfolio & Presentation</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 4</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 5: Final Project -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="graphicHeadingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseFive" aria-expanded="false" aria-controls="graphicCollapseFive">
+                                Chapter 5: Final Project
+                            </button>
+                        </h2>
+                        <div id="graphicCollapseFive" class="accordion-collapse collapse" aria-labelledby="graphicHeadingFive" data-bs-parent="#graphicChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Recap of the Course</li>
+                                    <li class="list-group-item">Lesson 2: Choosing a Final Project</li>
+                                    <li class="list-group-item">Lesson 3: Implementing All Skills</li>
+                                    <li class="list-group-item">Lesson 4: Presenting Your Work</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Final Exam</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -190,140 +219,6 @@
 
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Quiz Operation & Timer -->
-    <script>
-        let totalTime = 15 * 60; // Set total quiz time (15 minutes)
-        let timeLeft = totalTime;
-        let timer; // Variable to store the timer
-    
-        // Correct Answers (Define correct options)
-        const correctAnswers = {
-            q1: "q1a1", // Correct answer for Question 1
-            q2: "q2a2", // Correct answer for Question 2
-            q3: "q3a3"  // Correct answer for Question 3
-        };
-    
-        // Start Quiz Button Click Event
-        document.getElementById("startQuiz").addEventListener("click", function () {
-            let confirmStart = confirm("Are you ready to start the quiz? Once started, the timer cannot be paused.");
-            if (confirmStart) {
-                document.getElementById("startQuiz").style.display = "none"; // Hide Start Button
-                document.getElementById("quiz-timer-container").style.display = "block"; // Show Timer
-                document.getElementById("quiz-questions").style.display = "block"; // Show Questions
-                timer = setInterval(updateTimer, 1000); // Start Timer
-            }
-        });
-    
-        // Timer Function
-        function updateTimer() {
-            let minutes = Math.floor(timeLeft / 60);
-            let seconds = timeLeft % 60;
-            let timerElement = document.getElementById("quiz-timer");
-    
-            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            
-            // Change timer color to red when 30 seconds left
-            if (timeLeft <= 30) {
-                timerElement.classList.remove("bg-primary");
-                timerElement.classList.add("bg-danger");
-            }
-    
-            // Stop Timer & Submit Quiz if Time Runs Out
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                alert("Time is up! Submitting quiz...");
-                document.getElementById("finishQuiz").click();
-                return;
-            }
-    
-            timeLeft--; // Decrease time
-        }
-    
-        // Handle Quiz Submission
-        document.getElementById("finishQuiz").addEventListener("click", function () {
-            clearInterval(timer);
-    
-            let timerElement = document.getElementById("quiz-timer");
-    
-            if (timeLeft <= 0) {
-                timerElement.classList.add("bg-danger"); // Keep red if time ran out
-            } else {
-                timerElement.classList.remove("bg-primary", "bg-danger");
-                timerElement.classList.add("bg-success"); // Green if finished manually
-            }
-    
-            // Calculate Quiz Results
-            let correctCount = 0;
-            let unansweredCount = 0;
-            let totalQuestions = Object.keys(correctAnswers).length;
-    
-            for (let q in correctAnswers) {
-                let selected = document.querySelector(`input[name="${q}"]:checked`);
-                if (!selected) {
-                    unansweredCount++;
-                } else if (selected.id === correctAnswers[q]) {
-                    correctCount++;
-                }
-            }
-    
-            // ✅ FIX: The percentage is now calculated based on TOTAL QUESTIONS, not just answered ones.
-            let percentage = Math.round((correctCount / totalQuestions) * 100);
-    
-            let timeTaken = totalTime - timeLeft;
-            let timeTakenMinutes = Math.floor(timeTaken / 60);
-            let timeTakenSeconds = timeTaken % 60;
-    
-            // Show Completion Message BELOW THE TIMER
-            let messageDiv = document.createElement("div");
-            messageDiv.className = "alert alert-success text-center mt-3";
-            messageDiv.textContent = "🎉 Quiz Completed Successfully!";
-            
-            let timerContainer = document.getElementById("quiz-timer-container");
-            timerContainer.parentNode.insertBefore(messageDiv, timerContainer.nextSibling);
-    
-            // Show Report in Table Format BELOW COMPLETION MESSAGE
-            let reportDiv = document.createElement("div");
-            reportDiv.className = "mt-3";
-            reportDiv.innerHTML = `
-                <h5 class="text-center text-primary">📊 Quiz Report</h5>
-                <table class="table table-bordered text-center">
-                    <tbody>
-                        <tr>
-                            <th class="bg-dark text-white">✅ Correct Answers</th>
-                            <td>${correctCount} / ${totalQuestions}</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-dark text-white">🎯 Score Percentage</th>
-                            <td>${percentage}%</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-dark text-white">⏳ Time Taken</th>
-                            <td>${timeTakenMinutes}m ${timeTakenSeconds}s</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-dark text-white">❓ Unanswered Questions</th>
-                            <td>${unansweredCount}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
-            messageDiv.parentNode.insertBefore(reportDiv, messageDiv.nextSibling);
-    
-            // Disable Quiz Questions to Prevent Further Changes
-            document.querySelectorAll(".form-check-input").forEach(input => {
-                input.disabled = true;
-            });
-    
-            // Disable Finish Button (Make it Faded & Non-Clickable)
-            let finishBtn = document.getElementById("finishQuiz");
-            finishBtn.disabled = true;
-            finishBtn.style.pointerEvents = "none";
-            finishBtn.style.cursor = "not-allowed";
-            finishBtn.classList.remove("btn-primary");
-            finishBtn.classList.add("btn-secondary", "opacity-50");
-        });
-    </script> 
 
     <!-- Preloader Hide Script -->
     <script>

@@ -1,0 +1,350 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnPro | Full Stack Web Development</title>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/quizzes-styles.css">
+    <link rel="stylesheet" href="../../assets/css/preloader.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+        <p>Loading, preparing your course please wait...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="d-flex justify-content-between align-items-center p-3 bg-white shadow-sm">
+        <div class="d-flex align-items-center">
+            <a href="javascript:history.back()" class="btn btn-light me-3"><i class="fas fa-arrow-left"></i></a>
+            <a href="../../index.html" class="text-decoration-none" style="display:inline-flex;">
+                <img src="../../assets/images/logo.png" alt="logo" id="logo" style="width: 6%;">
+                <h2 class="text-primary fw-bold">LearnPro</h2>
+            </a>
+        </div>
+        <div class="d-flex align-items-center gap-3">
+            <div class="dropdown">
+                <a href="javascript:void(0)" class="text-primary text-decoration-none fw-semibold dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    User
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </div>
+            <div class="d-flex">
+                <input type="text" class="form-control me-2" placeholder="Search from courses...">
+                <a href="javascript:void(0)" id="search-input" style="background-color: rgba(158, 158, 158, 0.769);" class="btn btn-secondary px-2 rounded-5">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+            <a href="javascript:void(0)" class="btn btn-white notification-bell border border-2">
+                <i class="fa-solid fa-bell"></i>
+                <span class="badge"></span>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Daily Challenge Banner -->
+    <div class="text-center bg-primary text-white py-3 mb-4">
+        <h5>Claim Your Daily Challenge ✨</h5>
+    </div>
+    
+    <!-- Course Content Section -->
+    <div class="container">
+        <h2 class="text-primary">Full Stack Web Development</h2>
+        <div class="row mt-4">
+            <!-- Quiz -->
+            <div class="quiz-container mt-4">
+                <h2 class="text-primary text-center">Quiz for <span class="text-info">Chapter 1</span></h2>
+
+                <!-- Start Quiz Button -->
+                <div class="text-center mb-3">
+                    <button class="btn btn-success px-4" id="startQuiz">Start Quiz</button>
+                </div>
+
+                <!-- Timer (Hidden by Default) -->
+                <div class="text-end me-4" id="quiz-timer-container" style="display: none;">
+                    <span class="badge bg-primary fs-5" id="quiz-timer">15:00</span>
+                </div>
+
+                <!-- Quiz Questions (Hidden by Default) -->
+                <div class="mt-3" id="quiz-questions" style="display: none;">
+                    <!-- Question 1 -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fw-bold">1</span> Lorem ipsum dolor sit amet
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a1">
+                                    <label class="form-check-label" for="q1a1">Lorem ipsum dolor sit amet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a2">
+                                    <label class="form-check-label" for="q1a2">Lorem ipsum dolor sit</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q1" id="q1a3">
+                                    <label class="form-check-label" for="q1a3">Lorem ipsum dolor sit amet consectetur</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fw-bold">2</span> Lorem ipsum dolor sit amet consectetur.
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a1">
+                                    <label class="form-check-label" for="q2a1">Lorem ipsum dolor sit amet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a2">
+                                    <label class="form-check-label" for="q2a2">Lorem ipsum dolor sit amet consectetur</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q2" id="q2a3">
+                                    <label class="form-check-label" for="q2a3">Lorem ipsum dolor sit</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">
+                            <span class="fw-bold">3</span> Lorem ipsum dolor sit amet consectetur.
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a1">
+                                    <label class="form-check-label" for="q3a1">Lorem ipsum dolor sit amet</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a2">
+                                    <label class="form-check-label" for="q3a2">Lorem ipsum dolor sit amet consectetur</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="q3" id="q3a3">
+                                    <label class="form-check-label" for="q3a3">Lorem ipsum dolor sit</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Finish Button -->
+                    <div class="text-center mb-3">
+                        <button class="btn btn-primary px-5" id="finishQuiz">Finish</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="../../assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Quiz Operation & Timer -->
+    <script>
+        let totalTime = 15 * 60; // 15 minutes in seconds
+        let timeLeft = totalTime;
+        let timer;
+        let quizFinished = false; // Flag to check if quiz is submitted
+
+        // Correct Answers
+        const correctAnswers = {
+            q1: "q1a1",
+            q2: "q2a2",
+            q3: "q3a3"
+        };
+
+        document.getElementById("startQuiz").addEventListener("click", function () {
+            let confirmStart = confirm("Are you ready to start the quiz? Once started, the timer cannot be paused.");
+            if (confirmStart) {
+                document.getElementById("startQuiz").style.display = "none";
+                document.getElementById("quiz-timer-container").style.display = "block";
+                document.getElementById("quiz-questions").style.display = "block";
+                timer = setInterval(updateTimer, 1000);
+            }
+        });
+
+        function updateTimer() {
+            if (quizFinished) return; // Prevents updating if quiz is already submitted
+
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+            let timerElement = document.getElementById("quiz-timer");
+
+            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            if (timeLeft <= 30) {
+                timerElement.classList.remove("bg-primary");
+                timerElement.classList.add("bg-danger");
+            }
+
+            if (timeLeft <= 0) {
+                clearInterval(timer);
+                alert("Time is up! Submitting quiz...");
+                submitQuiz(); // Call submit function when time runs out
+                return;
+            }
+
+            timeLeft--;
+        }
+
+        document.getElementById("finishQuiz").addEventListener("click", function (event) {
+            // Prevent multiple modals from being created
+            if (document.querySelector('.custom-modal')) return;
+
+            // Create a custom non-blocking confirmation modal
+            let modal = document.createElement("div");
+            modal.className = "custom-modal";
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <p>Are you sure you want to submit the quiz? You cannot change your answers after submission.</p>
+                    <div class="d-flex justify-content-center gap-4">
+                        <button id="confirmSubmit" class="btn btn-warning">Yes, Submit</button>
+                        <button id="cancelSubmit" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            // Prevent multiple modals from triggering on Enter key
+            event.stopPropagation();
+
+            // Handle confirmation button click
+            document.getElementById("confirmSubmit").addEventListener("click", function () {
+                document.body.removeChild(modal);
+                submitQuiz();
+            });
+
+            // Handle cancel button click
+            document.getElementById("cancelSubmit").addEventListener("click", function () {
+                document.body.removeChild(modal);
+            });
+
+            // **Fix for Enter key issue**
+            document.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault(); // Stops the Enter key from re-triggering modal
+                }
+            }, { once: true }); // Ensures the event only runs once per modal
+        });
+
+        function submitQuiz() {
+            if (quizFinished) return; // Prevent multiple submissions
+            quizFinished = true; // Mark quiz as finished
+            clearInterval(timer); // Stop the timer after confirmation
+
+            let timerElement = document.getElementById("quiz-timer");
+
+            if (timeLeft <= 0) {
+                timerElement.classList.add("bg-danger"); // Keep red if time ran out
+            } else {
+                timerElement.classList.remove("bg-primary", "bg-danger");
+                timerElement.classList.add("bg-success"); // Green if finished manually
+            }
+
+            // Calculate Quiz Results
+            let correctCount = 0;
+            let wrongAnswersCount = 0;
+            let unansweredCount = 0;
+            let totalQuestions = Object.keys(correctAnswers).length;
+
+            for (let q in correctAnswers) {
+                let selected = document.querySelector(`input[name="${q}"]:checked`);
+                if (!selected) {
+                    unansweredCount++;
+                } else if (selected.id === correctAnswers[q]) {
+                    correctCount++;
+                } else {
+                    wrongAnswersCount++;
+                }
+            }
+
+            let percentage = Math.round((correctCount / totalQuestions) * 100);
+            let timeTaken = totalTime - timeLeft;
+            let timeTakenMinutes = Math.floor(timeTaken / 60);
+            let timeTakenSeconds = timeTaken % 60;
+
+            // Show Completion Message BELOW THE TIMER
+            let messageDiv = document.createElement("div");
+            messageDiv.className = "alert alert-success text-center mt-3";
+            messageDiv.textContent = "🎉 Quiz Completed Successfully!";
+            
+            let timerContainer = document.getElementById("quiz-timer-container");
+            timerContainer.parentNode.insertBefore(messageDiv, timerContainer.nextSibling);
+
+            // Show Report in Table Format BELOW COMPLETION MESSAGE
+            let reportDiv = document.createElement("div");
+            reportDiv.className = "mt-3";
+            reportDiv.innerHTML = `
+                <h5 class="text-center text-primary">📊 Quiz Report</h5>
+                <table class="table table-bordered text-center">
+                    <tbody>
+                        <tr>
+                            <th class="bg-dark text-white">🔢 Total Questions</th>
+                            <td>${totalQuestions}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">✅ Correct Answers</th>
+                            <td>${correctCount} / ${totalQuestions}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">❌ Wrong Answers</th>
+                            <td>${wrongAnswersCount} / ${totalQuestions}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">❓ Unanswered Questions</th>
+                            <td>${unansweredCount} / ${totalQuestions}</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">⏳ Time Taken</th>
+                            <td>${timeTakenMinutes}m ${timeTakenSeconds}s</td>
+                        </tr>
+                        <tr>
+                            <th class="bg-dark text-white">🎯 Score Percentage</th>
+                            <td>${percentage}%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+            messageDiv.parentNode.insertBefore(reportDiv, messageDiv.nextSibling);
+
+            // Disable Quiz Questions to Prevent Further Changes
+            document.querySelectorAll(".form-check-input").forEach(input => {
+                input.disabled = true;
+            });
+
+            // Disable Finish Button (Make it Faded & Non-Clickable)
+            let finishBtn = document.getElementById("finishQuiz");
+            finishBtn.disabled = true;
+            finishBtn.style.pointerEvents = "none";
+            finishBtn.style.cursor = "not-allowed";
+            finishBtn.classList.remove("btn-primary");
+            finishBtn.classList.add("btn-secondary", "opacity-50");
+        }
+    </script>
+    
+    <!-- Preloader Hide Script -->
+    <script>
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById("preloader").style.display = "none";
+            }, 3000);
+        };
+    </script>
+</body>
+</html>

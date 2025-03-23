@@ -54,7 +54,7 @@
     </div>
     
     <!-- Course Content Section -->
-    <div class="container">
+    <div class="container mb-5">
         <h2 class="text-primary">Full Stack Development</h2>
         
         <div class="row mt-4">
@@ -70,119 +70,148 @@
             
             <!-- Lessons Sidebar -->
             <div class="col-md-4">
-                <h5 class="text-primary">Chapter 1 Lessons</h5>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div>
-                            <h6>Title Line I</h6>
-                            <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                        </div>
-                        <span class="badge bg-primary">▶</span>
-                    </li>
-                    <li class="list-group-item">
-                        <h6>Title Line II</h6>
-                        <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                    </li>
-                    <li class="list-group-item">
-                        <h6>Title Line III</h6>
-                        <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                    </li>
-                    <li class="list-group-item">
-                        <h6>Title Line IV</h6>
-                        <p class="text-muted mb-0">Lorem ipsum dolor sit amet...</p>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Quiz -->
-            <div class="quiz-container mt-4">
-                <h2 class="text-primary text-center">Quiz for Lesson <span class="text-info">1-2</span></h2>
-
-                <!-- Start Quiz Button -->
-                <div class="text-center mb-3">
-                    <button class="btn btn-success px-4" id="startQuiz">Start Quiz</button>
-                </div>
-
-                <!-- Timer (Hidden by Default) -->
-                <div class="text-end me-4" id="quiz-timer-container" style="display: none;">
-                    <span class="badge bg-primary fs-5" id="quiz-timer">15:00</span>
-                </div>
-
-                <!-- Quiz Questions (Hidden by Default) -->
-                <div class="mt-3" id="quiz-questions" style="display: none;">
-                    <!-- Question 1 -->
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fw-bold">1</span> Lorem ipsum dolor sit amet
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q1" id="q1a1">
-                                    <label class="form-check-label" for="q1a1">Lorem ipsum dolor sit amet</label>
+                <h5 class="text-primary">Course Chapters</h5>
+                
+                <div class="accordion" id="fullStackChaptersAccordion">
+                    <!-- Chapter 1: Introduction to Full Stack Development -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fullStackHeadingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#fullStackCollapseOne" aria-expanded="true" aria-controls="fullStackCollapseOne">
+                                Chapter 1: Introduction to Full Stack Development
+                            </button>
+                        </h2>
+                        <div id="fullStackCollapseOne" class="accordion-collapse collapse show" aria-labelledby="fullStackHeadingOne" data-bs-parent="#fullStackChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: What is Full Stack Development?</li>
+                                    <li class="list-group-item">Lesson 2: Overview of C# & .NET Framework</li>
+                                    <li class="list-group-item">Lesson 3: Frontend vs Backend Development</li>
+                                    <li class="list-group-item">Lesson 4: Setting Up Development Environment</li>
+                                    <li class="list-group-item">Lesson 5: Introduction to Visual Studio & .NET Core</li>
+                                    <li class="list-group-item">Lesson 6: Creating Your First ASP.NET Web App</li>
+                                    <li class="list-group-item">Lesson 7: Understanding MVC Architecture</li>
+                                    <li class="list-group-item">Lesson 8: Basic C# for Web Development</li>
+                                    <li class="list-group-item">Lesson 9: Handling HTTP Requests & Responses</li>
+                                    <li class="list-group-item">Lesson 10: Introduction to API Development</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="./quizzes/full_stack-chapter_1.html">Go to Quiz Section for Chapter 1</a>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q1" id="q1a2">
-                                    <label class="form-check-label" for="q1a2">Lorem ipsum dolor sit</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q1" id="q1a3">
-                                    <label class="form-check-label" for="q1a3">Lorem ipsum dolor sit amet consectetur</label>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Question 2 -->
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fw-bold">2</span> Lorem ipsum dolor sit amet consectetur.
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q2" id="q2a1">
-                                    <label class="form-check-label" for="q2a1">Lorem ipsum dolor sit amet</label>
+                    <!-- Chapter 2: Frontend Development with C# -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fullStackHeadingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fullStackCollapseTwo" aria-expanded="false" aria-controls="fullStackCollapseTwo">
+                                Chapter 2: Frontend Development with C#
+                            </button>
+                        </h2>
+                        <div id="fullStackCollapseTwo" class="accordion-collapse collapse" aria-labelledby="fullStackHeadingTwo" data-bs-parent="#fullStackChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Introduction to Razor Pages</li>
+                                    <li class="list-group-item">Lesson 2: Working with HTML & CSS in ASP.NET</li>
+                                    <li class="list-group-item">Lesson 3: Using Bootstrap with .NET Projects</li>
+                                    <li class="list-group-item">Lesson 4: Understanding Blazor for UI Development</li>
+                                    <li class="list-group-item">Lesson 5: Working with JavaScript in .NET</li>
+                                    <li class="list-group-item">Lesson 6: Handling Forms and User Inputs</li>
+                                    <li class="list-group-item">Lesson 7: Implementing AJAX in .NET Applications</li>
+                                    <li class="list-group-item">Lesson 8: Validating User Inputs</li>
+                                    <li class="list-group-item">Lesson 9: Integrating Frontend with Backend</li>
+                                    <li class="list-group-item">Lesson 10: Deploying a Frontend in .NET</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 2</a>
                                 </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q2" id="q2a2">
-                                    <label class="form-check-label" for="q2a2">Lorem ipsum dolor sit amet consectetur</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q2" id="q2a3">
-                                    <label class="form-check-label" for="q2a3">Lorem ipsum dolor sit</label>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Question 3 -->
-                    <div class="card mb-3">
-                        <div class="card-header bg-primary text-white">
-                            <span class="fw-bold">3</span> Lorem ipsum dolor sit amet consectetur.
-                        </div>
-                        <div class="card-body">
-                            <form>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q3" id="q3a1">
-                                    <label class="form-check-label" for="q3a1">Lorem ipsum dolor sit amet</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q3" id="q3a2">
-                                    <label class="form-check-label" for="q3a2">Lorem ipsum dolor sit amet consectetur</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="q3" id="q3a3">
-                                    <label class="form-check-label" for="q3a3">Lorem ipsum dolor sit</label>
-                                </div>
-                            </form>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Finish Button -->
-                    <div class="text-center mb-3">
-                        <button class="btn btn-primary px-5" id="finishQuiz">Finish</button>
+                    <!-- Chapter 3: Backend Development with .NET -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fullStackHeadingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fullStackCollapseThree" aria-expanded="false" aria-controls="fullStackCollapseThree">
+                                Chapter 3: Backend Development with .NET
+                            </button>
+                        </h2>
+                        <div id="fullStackCollapseThree" class="accordion-collapse collapse" aria-labelledby="fullStackHeadingThree" data-bs-parent="#fullStackChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Introduction to .NET Backend Development</li>
+                                    <li class="list-group-item">Lesson 2: Understanding ASP.NET Core</li>
+                                    <li class="list-group-item">Lesson 3: Working with Controllers & Actions</li>
+                                    <li class="list-group-item">Lesson 4: Managing Middleware in .NET</li>
+                                    <li class="list-group-item">Lesson 5: Handling Data with Entity Framework Core</li>
+                                    <li class="list-group-item">Lesson 6: Creating RESTful APIs in .NET</li>
+                                    <li class="list-group-item">Lesson 7: Securing APIs with Authentication</li>
+                                    <li class="list-group-item">Lesson 8: Implementing Authorization</li>
+                                    <li class="list-group-item">Lesson 9: Working with Sessions & Cookies</li>
+                                    <li class="list-group-item">Lesson 10: Handling Error & Logging</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 3</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- Chapter 4: Database & Data Management -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fullStackHeadingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fullStackCollapseFour" aria-expanded="false" aria-controls="fullStackCollapseFour">
+                                Chapter 4: Database & Data Management
+                            </button>
+                        </h2>
+                        <div id="fullStackCollapseFour" class="accordion-collapse collapse" aria-labelledby="fullStackHeadingFour" data-bs-parent="#fullStackChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Introduction to Databases</li>
+                                    <li class="list-group-item">Lesson 2: Working with SQL Server</li>
+                                    <li class="list-group-item">Lesson 3: Connecting .NET with SQL Server</li>
+                                    <li class="list-group-item">Lesson 4: CRUD Operations in .NET</li>
+                                    <li class="list-group-item">Lesson 5: Using ORM (Entity Framework Core)</li>
+                                    <li class="list-group-item">Lesson 6: Query Optimization</li>
+                                    <li class="list-group-item">Lesson 7: Handling Database Migrations</li>
+                                    <li class="list-group-item">Lesson 8: Working with Stored Procedures</li>
+                                    <li class="list-group-item">Lesson 9: Implementing Caching</li>
+                                    <li class="list-group-item">Lesson 10: Database Backup & Security</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 4</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chapter 5: Full Stack Project -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="fullStackHeadingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#fullStackCollapseFive" aria-expanded="false" aria-controls="fullStackCollapseFive">
+                                Chapter 5: Full Stack Project
+                            </button>
+                        </h2>
+                        <div id="fullStackCollapseFive" class="accordion-collapse collapse" aria-labelledby="fullStackHeadingFive" data-bs-parent="#fullStackChaptersAccordion">
+                            <div class="accordion-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">Lesson 1: Project Overview & Planning</li>
+                                    <li class="list-group-item">Lesson 2: Building Frontend Components</li>
+                                    <li class="list-group-item">Lesson 3: Backend API Development</li>
+                                    <li class="list-group-item">Lesson 4: Deploying the Application</li>
+                                </ul>
+                                <!-- Quiz Button -->
+                                <div class="text-center mt-3">
+                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Final Exam</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -190,140 +219,6 @@
 
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Quiz Operation & Timer -->
-    <script>
-        let totalTime = 15 * 60; // Set total quiz time (15 minutes)
-        let timeLeft = totalTime;
-        let timer; // Variable to store the timer
-    
-        // Correct Answers (Define correct options)
-        const correctAnswers = {
-            q1: "q1a1", // Correct answer for Question 1
-            q2: "q2a2", // Correct answer for Question 2
-            q3: "q3a3"  // Correct answer for Question 3
-        };
-    
-        // Start Quiz Button Click Event
-        document.getElementById("startQuiz").addEventListener("click", function () {
-            let confirmStart = confirm("Are you ready to start the quiz? Once started, the timer cannot be paused.");
-            if (confirmStart) {
-                document.getElementById("startQuiz").style.display = "none"; // Hide Start Button
-                document.getElementById("quiz-timer-container").style.display = "block"; // Show Timer
-                document.getElementById("quiz-questions").style.display = "block"; // Show Questions
-                timer = setInterval(updateTimer, 1000); // Start Timer
-            }
-        });
-    
-        // Timer Function
-        function updateTimer() {
-            let minutes = Math.floor(timeLeft / 60);
-            let seconds = timeLeft % 60;
-            let timerElement = document.getElementById("quiz-timer");
-    
-            timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            
-            // Change timer color to red when 30 seconds left
-            if (timeLeft <= 30) {
-                timerElement.classList.remove("bg-primary");
-                timerElement.classList.add("bg-danger");
-            }
-    
-            // Stop Timer & Submit Quiz if Time Runs Out
-            if (timeLeft <= 0) {
-                clearInterval(timer);
-                alert("Time is up! Submitting quiz...");
-                document.getElementById("finishQuiz").click();
-                return;
-            }
-    
-            timeLeft--; // Decrease time
-        }
-    
-        // Handle Quiz Submission
-        document.getElementById("finishQuiz").addEventListener("click", function () {
-            clearInterval(timer);
-    
-            let timerElement = document.getElementById("quiz-timer");
-    
-            if (timeLeft <= 0) {
-                timerElement.classList.add("bg-danger"); // Keep red if time ran out
-            } else {
-                timerElement.classList.remove("bg-primary", "bg-danger");
-                timerElement.classList.add("bg-success"); // Green if finished manually
-            }
-    
-            // Calculate Quiz Results
-            let correctCount = 0;
-            let unansweredCount = 0;
-            let totalQuestions = Object.keys(correctAnswers).length;
-    
-            for (let q in correctAnswers) {
-                let selected = document.querySelector(`input[name="${q}"]:checked`);
-                if (!selected) {
-                    unansweredCount++;
-                } else if (selected.id === correctAnswers[q]) {
-                    correctCount++;
-                }
-            }
-    
-            // ✅ FIX: The percentage is now calculated based on TOTAL QUESTIONS, not just answered ones.
-            let percentage = Math.round((correctCount / totalQuestions) * 100);
-    
-            let timeTaken = totalTime - timeLeft;
-            let timeTakenMinutes = Math.floor(timeTaken / 60);
-            let timeTakenSeconds = timeTaken % 60;
-    
-            // Show Completion Message BELOW THE TIMER
-            let messageDiv = document.createElement("div");
-            messageDiv.className = "alert alert-success text-center mt-3";
-            messageDiv.textContent = "🎉 Quiz Completed Successfully!";
-            
-            let timerContainer = document.getElementById("quiz-timer-container");
-            timerContainer.parentNode.insertBefore(messageDiv, timerContainer.nextSibling);
-    
-            // Show Report in Table Format BELOW COMPLETION MESSAGE
-            let reportDiv = document.createElement("div");
-            reportDiv.className = "mt-3";
-            reportDiv.innerHTML = `
-                <h5 class="text-center text-primary">📊 Quiz Report</h5>
-                <table class="table table-bordered text-center">
-                    <tbody>
-                        <tr>
-                            <th class="bg-dark text-white">✅ Correct Answers</th>
-                            <td>${correctCount} / ${totalQuestions}</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-dark text-white">🎯 Score Percentage</th>
-                            <td>${percentage}%</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-dark text-white">⏳ Time Taken</th>
-                            <td>${timeTakenMinutes}m ${timeTakenSeconds}s</td>
-                        </tr>
-                        <tr>
-                            <th class="bg-dark text-white">❓ Unanswered Questions</th>
-                            <td>${unansweredCount}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            `;
-            messageDiv.parentNode.insertBefore(reportDiv, messageDiv.nextSibling);
-    
-            // Disable Quiz Questions to Prevent Further Changes
-            document.querySelectorAll(".form-check-input").forEach(input => {
-                input.disabled = true;
-            });
-    
-            // Disable Finish Button (Make it Faded & Non-Clickable)
-            let finishBtn = document.getElementById("finishQuiz");
-            finishBtn.disabled = true;
-            finishBtn.style.pointerEvents = "none";
-            finishBtn.style.cursor = "not-allowed";
-            finishBtn.classList.remove("btn-primary");
-            finishBtn.classList.add("btn-secondary", "opacity-50");
-        });
-    </script> 
 
     <!-- Preloader Hide Script -->
     <script>
