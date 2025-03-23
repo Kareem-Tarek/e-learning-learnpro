@@ -73,14 +73,14 @@
                 <h5 class="text-primary">Course Chapters</h5>
                 
                 <div class="accordion" id="graphicChaptersAccordion">
-                    <!-- Chapter 1: Introduction to Graphic Design -->
+                    <!-- Chapter 1 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="graphicHeadingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseOne" aria-expanded="true" aria-controls="graphicCollapseOne">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseOne" aria-expanded="true" aria-controls="graphicCollapseOne">
                                 Chapter 1: Introduction to Graphic Design
                             </button>
                         </h2>
-                        <div id="graphicCollapseOne" class="accordion-collapse collapse show" aria-labelledby="graphicHeadingOne" data-bs-parent="#graphicChaptersAccordion">
+                        <div id="graphicCollapseOne" class="accordion-collapse collapse" aria-labelledby="graphicHeadingOne">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: What is Graphic Design?</li>
@@ -102,14 +102,14 @@
                         </div>
                     </div>
 
-                    <!-- Chapter 2: Graphic Design Tools -->
+                    <!-- Chapter 2 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="graphicHeadingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseTwo" aria-expanded="false" aria-controls="graphicCollapseTwo">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseTwo" aria-expanded="false" aria-controls="graphicCollapseTwo">
                                 Chapter 2: Graphic Design Tools
                             </button>
                         </h2>
-                        <div id="graphicCollapseTwo" class="accordion-collapse collapse" aria-labelledby="graphicHeadingTwo" data-bs-parent="#graphicChaptersAccordion">
+                        <div id="graphicCollapseTwo" class="accordion-collapse collapse" aria-labelledby="graphicHeadingTwo">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Introduction to Adobe Photoshop</li>
@@ -131,14 +131,14 @@
                         </div>
                     </div>
 
-                    <!-- Chapter 3: Branding & Identity Design -->
+                    <!-- Chapter 3 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="graphicHeadingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseThree" aria-expanded="false" aria-controls="graphicCollapseThree">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseThree" aria-expanded="false" aria-controls="graphicCollapseThree">
                                 Chapter 3: Branding & Identity Design
                             </button>
                         </h2>
-                        <div id="graphicCollapseThree" class="accordion-collapse collapse" aria-labelledby="graphicHeadingThree" data-bs-parent="#graphicChaptersAccordion">
+                        <div id="graphicCollapseThree" class="accordion-collapse collapse" aria-labelledby="graphicHeadingThree">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Understanding Branding</li>
@@ -160,14 +160,14 @@
                         </div>
                     </div>
 
-                    <!-- Chapter 4: Digital Illustration -->
+                    <!-- Chapter 4 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="graphicHeadingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseFour" aria-expanded="false" aria-controls="graphicCollapseFour">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseFour" aria-expanded="false" aria-controls="graphicCollapseFour">
                                 Chapter 4: Digital Illustration
                             </button>
                         </h2>
-                        <div id="graphicCollapseFour" class="accordion-collapse collapse" aria-labelledby="graphicHeadingFour" data-bs-parent="#graphicChaptersAccordion">
+                        <div id="graphicCollapseFour" class="accordion-collapse collapse" aria-labelledby="graphicHeadingFour">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Introduction to Digital Illustration</li>
@@ -189,14 +189,14 @@
                         </div>
                     </div>
 
-                    <!-- Chapter 5: Final Project -->
+                    <!-- Chapter 5 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="graphicHeadingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseFive" aria-expanded="false" aria-controls="graphicCollapseFive">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#graphicCollapseFive" aria-expanded="false" aria-controls="graphicCollapseFive">
                                 Chapter 5: Final Project
                             </button>
                         </h2>
-                        <div id="graphicCollapseFive" class="accordion-collapse collapse" aria-labelledby="graphicHeadingFive" data-bs-parent="#graphicChaptersAccordion">
+                        <div id="graphicCollapseFive" class="accordion-collapse collapse" aria-labelledby="graphicHeadingFive">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Recap of the Course</li>
@@ -211,14 +211,28 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select all accordion buttons and add the 'collapsed' class
+            document.querySelectorAll(".accordion-button").forEach(button => {
+                button.classList.add("collapsed");
+            });
+    
+            // Ensure all accordion panels are collapsed
+            document.querySelectorAll(".accordion-collapse").forEach(panel => {
+                panel.classList.remove("show");
+            });
+        });
+    </script>
 
     <!-- Preloader Hide Script -->
     <script>

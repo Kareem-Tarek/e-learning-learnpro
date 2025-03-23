@@ -153,3 +153,17 @@ body {
 .chat-message.user {
     justify-content: flex-start;
 }
+
+/* Enrolled courses styles */
+    /* Ensure the coloration of the default collapsed panels */
+        /* Keep Bootstrap default light blue when expanded */
+        .accordion-button:not(.collapsed) {
+            background-color: #cfe2fdc9 !important; /* Light blue when expanded */
+            color: black !important;
+        }
+
+        /* Set background to white when collapsed */
+        .accordion-button.collapsed {
+            background-color: white !important;
+            color: black !important;
+        }  

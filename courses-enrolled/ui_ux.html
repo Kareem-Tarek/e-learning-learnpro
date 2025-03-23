@@ -76,11 +76,11 @@
                     <!-- Chapter 1 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 Chapter 1: Introduction to UI/UX
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#chaptersAccordion">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Basics of UI/UX</li>
@@ -105,11 +105,11 @@
                     <!-- Chapter 2 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 Chapter 2: UI Principles
                             </button>
                         </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#chaptersAccordion">
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: UI Principles</li>
@@ -134,11 +134,11 @@
                     <!-- Chapter 3 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 Chapter 3: UX Research & Testing
                             </button>
                         </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#chaptersAccordion">
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: User Research Basics</li>
@@ -163,11 +163,11 @@
                     <!-- Chapter 4 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 Chapter 4: Advanced UI Components
                             </button>
                         </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#chaptersAccordion">
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Cards & Layouts</li>
@@ -192,11 +192,11 @@
                     <!-- Chapter 5 -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                 Chapter 5: UI/UX Final Project
                             </button>
                         </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#chaptersAccordion">
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive">
                             <div class="accordion-body">
                                 <ul class="list-group">
                                     <li class="list-group-item">Lesson 1: Course Recap</li>
@@ -206,36 +206,33 @@
                                 </ul>
                                 <!-- Quiz Button -->
                                 <div class="text-center mt-3">
-                                    <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Quiz Section for Chapter 2</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Final Exam -->
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingSix">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                Final Exam
-                            </button>
-                        </h2>
-                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#chaptersAccordion">
-                            <div class="accordion-body">
-                                <!-- Quiz Button -->
-                                <div class="text-center mt-3">
                                     <a class="btn btn-success w-100" target="_blank" href="javascript:void(0)">Go to Final Exam</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select all accordion buttons and add the 'collapsed' class
+            document.querySelectorAll(".accordion-button").forEach(button => {
+                button.classList.add("collapsed");
+            });
+    
+            // Ensure all accordion panels are collapsed
+            document.querySelectorAll(".accordion-collapse").forEach(panel => {
+                panel.classList.remove("show");
+            });
+        });
+    </script>
 
     <!-- Preloader Hide Script -->
     <script>
