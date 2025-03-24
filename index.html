@@ -113,31 +113,55 @@
                                         <h4 class="modal-title fw-bold text-primary">Statistics</h4>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-
-                                    <!-- Knowledge Gross Chart -->
-                                    <div class="bg-white p-3 rounded mt-4 shadow-sm">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h6 class="fw-bold mb-0">Knowledge Gross</h6>
-                                            <button class="btn btn-light btn-sm">This Week</button>
-                                        </div>
-                                        <canvas id="knowledgeChart" class="mt-3"></canvas>
-                                    </div>
-
-                                    <!-- Quizzes Section -->
-                                    <div class="bg-white p-3 rounded mt-3 shadow-sm">
-                                        <h6 class="fw-bold">Quizzes</h6>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="text-center">
-                                                <canvas id="quizChart1" width="70" height="70"></canvas>
-                                                <p class="mt-2 text-muted small">Attempt Quizzes</p>
+                                
+                                    <!-- Full-width row for Courses Completed -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="bg-white p-3 rounded mt-4 shadow-sm">
+                                                <h6 class="fw-bold">Courses Completed</h6>
+                                                <p class="text-muted">You have completed <span id="completedCourses">5</span> courses out of <span id="totalCourses">10</span>.</p>
+                                                <div class="progress">
+                                                    <div id="courseCompletionProgress" class="progress-bar bg-success" role="progressbar"></div>
+                                                </div>
                                             </div>
-                                            <div class="text-center">
-                                                <canvas id="quizChart2" width="70" height="70"></canvas>
-                                                <p class="mt-2 text-muted small">Average Marks</p>
+                                        </div>
+                                    </div>
+                                
+                                    <!-- Two-column Layout for Other Stats -->
+                                    <div class="row mt-3">
+                                        <!-- Column 1 -->
+                                        <div class="col-md-6">
+                                            <!-- Total Learning Time -->
+                                            <div class="bg-white p-3 rounded shadow-sm">
+                                                <h6 class="fw-bold">Total Learning Time</h6>
+                                                <p class="text-muted">Total hours spent on courses: <span id="learningHours">42</span> hrs</p>
+                                            </div>
+                                
+                                            <!-- Learning Breakdown Chart -->
+                                            <div class="bg-white p-3 rounded mt-3 shadow-sm">
+                                                <h6 class="fw-bold">Learning Breakdown</h6>
+                                                <canvas id="learningBreakdownChart"></canvas>
+                                            </div>
+                                        </div>
+                                
+                                        <!-- Column 2 -->
+                                        <div class="col-md-6">
+                                            <!-- Top Performing Course -->
+                                            <div class="bg-white p-3 rounded shadow-sm">
+                                                <h6 class="fw-bold">Most Engaged Course</h6>
+                                                <p class="text-muted">Your most engaged course: <strong id="topCourse">JavaScript & ES6</strong></p>
+                                            </div>
+                                
+                                            <!-- Task Completion Bar Chart -->
+                                            <div class="bg-white p-3 rounded mt-3 shadow-sm">
+                                                <h6 class="fw-bold">Task Completion Progress</h6>
+                                                <canvas id="taskCompletionChart"></canvas>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                
+                                
                             </div>
                         </div>
                     </div>
@@ -529,6 +553,57 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Sample Data for Statistics
+            let completedCourses = 5;
+            let totalCourses = 10;
+            let learningHours = 42;
+            let topCourse = "UI/UX Design";
+        
+            // Update UI dynamically
+            document.getElementById("completedCourses").textContent = completedCourses;
+            document.getElementById("totalCourses").textContent = totalCourses;
+            document.getElementById("learningHours").textContent = learningHours;
+            document.getElementById("topCourse").textContent = topCourse;
+        
+            // Update Course Completion Progress
+            let completionPercentage = (completedCourses / totalCourses) * 100;
+            document.getElementById("courseCompletionProgress").style.width = completionPercentage + "%";
+            document.getElementById("courseCompletionProgress").textContent = Math.round(completionPercentage) + "%";
+        
+            // Learning Breakdown Pie Chart
+            new Chart(document.getElementById('learningBreakdownChart').getContext('2d'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Quizzes', 'Lessons', 'Practice'],
+                    datasets: [{
+                        data: [30, 50, 20],
+                        backgroundColor: ['#ff6384', '#36a2eb', '#ffce56']
+                    }]
+                },
+                options: { cutoutPercentage: 60 }
+            });
+        
+            // Task Completion Bar Chart
+            new Chart(document.getElementById('taskCompletionChart').getContext('2d'), {
+                type: 'bar',
+                data: {
+                    labels: ['Tasks', 'Exams', 'Assignments'],
+                    datasets: [{
+                        label: 'Completion',
+                        data: [70, 85, 60],
+                        backgroundColor: ['#ff6384', '#36a2eb', '#4bc0c0']
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+        });        
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
             const progressBar = document.getElementById("deadline-progress");
             const progressIndicator = document.getElementById("progress-indicator");
             let progressPercentage = 80; // Change this dynamically if needed
@@ -563,36 +638,6 @@
             document.getElementById("showStatsModal").addEventListener("click", function () {
                 var myModal = new bootstrap.Modal(document.getElementById('statsModal'));
                 myModal.show();
-            });
-        
-            // Line Chart for Knowledge Gross
-            new Chart(document.getElementById('knowledgeChart').getContext('2d'), {
-                type: 'line',
-                data: {
-                    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"],
-                    datasets: [{
-                        label: 'Progress',
-                        data: [72, 81, 90, 77, 85, 80, 88, 92],
-                        borderColor: '#007bff',
-                        backgroundColor: 'rgba(0, 123, 255, 0.1)',
-                        fill: true
-                    }]
-                },
-                options: { responsive: true, maintainAspectRatio: false }
-            });
-        
-            // Small Quiz Attempt Chart
-            new Chart(document.getElementById('quizChart1').getContext('2d'), {
-                type: 'doughnut',
-                data: { datasets: [{ data: [70, 30], backgroundColor: ['#007bff', '#e0e0e0'] }] },
-                options: { cutoutPercentage: 75 }
-            });
-        
-            // Small Average Marks Chart
-            new Chart(document.getElementById('quizChart2').getContext('2d'), {
-                type: 'doughnut',
-                data: { datasets: [{ data: [25, 75], backgroundColor: ['#007bff', '#e0e0e0'] }] },
-                options: { cutoutPercentage: 75 }
             });
 
             // -------------------- Chat for mentor bot
