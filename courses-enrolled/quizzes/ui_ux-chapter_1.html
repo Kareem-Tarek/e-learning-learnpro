@@ -165,10 +165,18 @@
 
     <!-- Quiz Operation & Timer -->
     <script>
-        let totalTime = 5 * 60; // 5 minute in seconds
+        let totalTime = 1.10 * 60; // 5 minute in seconds
         let timeLeft = totalTime;
         let timer;
         let quizFinished = false; // Flag to check if quiz is submitted
+
+        // Load audio files
+        const warningSound = new Audio('../../assets/sounds/warning.mp3'); // For 1-minute warning
+        const criticalSound = new Audio('../../assets/sounds/critical.mp3'); // For 30-seconds warning
+        const timeUpSound = new Audio('../../assets/sounds/timeup.mp3'); // For time-up alert
+
+        let warningPlayed = false; // Flag to prevent repeating sound
+        let criticalPlayed = false; // Flag to prevent repeating sound
 
         // Correct Answers
         const correctAnswers = {
@@ -187,7 +195,7 @@
                 timer = setInterval(updateTimer, 1000); // Start the timer
             }
         });
-        
+
         function updateTimer() {
             if (quizFinished) return; // Prevents updating if quiz is already submitted
         
@@ -197,27 +205,45 @@
         
             timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         
-            // Change background color based on remaining time
+            // Sound & Background color conditions
             if (timeLeft <= 60 && timeLeft > 30) { // Between 1:00 and 0:31
                 timerElement.classList.remove("bg-primary", "bg-danger");
                 timerElement.classList.add("bg-warning", "text-dark");
+        
+                if (!warningPlayed) { // Play sound only once
+                    warningSound.play();
+                    warningPlayed = true;
+                }
+        
             } else if (timeLeft <= 30) { // 0:30 and below
                 timerElement.classList.remove("bg-primary", "bg-warning", "text-dark");
                 timerElement.classList.add("bg-danger", "text-white");
-            } else {
+        
+                if (!criticalPlayed) { // Play sound only once
+                    criticalSound.play();
+                    criticalPlayed = true;
+                }
+        
+            } else { // 1:01 and above
                 timerElement.classList.remove("bg-warning", "bg-danger");
                 timerElement.classList.add("bg-primary");
             }
         
             if (timeLeft <= 0) {
                 clearInterval(timer);
+        
+                // **Stop the critical.mp3 immediately before playing timeup.mp3**
+                criticalSound.pause();
+                criticalSound.currentTime = 0; // Reset it so it doesn't continue
+        
+                timeUpSound.play(); // Play the final alert
                 alert("Time is up! Submitting quiz...");
                 submitQuiz(); // Call submit function when time runs out
                 return;
             }
         
             timeLeft--;
-        }        
+        }     
 
         document.getElementById("finishQuiz").addEventListener("click", function (event) {
             // Prevent multiple modals from being created
@@ -267,10 +293,10 @@
             let timerElement = document.getElementById("quiz-timer");
 
             if (timeLeft <= 0) {
-                timerElement.classList.add("bg-danger"); // Keep red if time ran out
+                timerElement.classList.add("bg-danger"); // Ensuring that the background is kept "red" if time ran out
             } else {
-                timerElement.classList.remove("bg-primary", "bg-danger");
-                timerElement.classList.add("bg-success"); // Green if finished manually
+                timerElement.classList.remove("bg-primary", "bg-warning", "bg-danger", "text-dark");
+                timerElement.classList.add("bg-success", "text-white"); // Background will be "green" if finished manually
             }
 
             // Calculate Quiz Results
