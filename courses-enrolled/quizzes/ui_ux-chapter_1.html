@@ -77,7 +77,7 @@
 
                 <!-- Timer (Hidden by Default) -->
                 <div class="text-end me-4" id="quiz-timer-container" style="display: none;">
-                    <span class="badge bg-primary fs-5" id="quiz-timer">5:00</span>
+                    <span class="badge bg-primary fs-5 border border-3 border-secondary" id="quiz-timer">5:00</span>
                 </div>
 
                 <!-- Quiz Questions (Hidden by Default) -->
@@ -150,7 +150,7 @@
                             </form>
                         </div>
                     </div>
-
+                    
                     <!-- Finish Button -->
                     <div class="text-center mb-3">
                         <button class="btn btn-primary px-5" id="finishQuiz">Finish</button>
@@ -165,7 +165,7 @@
 
     <!-- Quiz Operation & Timer -->
     <script>
-        let totalTime = 5 * 60; // 5 minute in seconds
+        let totalTime = 1.10 * 60; // 5 minute in seconds
         let timeLeft = totalTime;
         let timer;
         let quizFinished = false; // Flag to check if quiz is submitted
@@ -187,30 +187,37 @@
                 timer = setInterval(updateTimer, 1000); // Start the timer
             }
         });
-
+        
         function updateTimer() {
             if (quizFinished) return; // Prevents updating if quiz is already submitted
-
+        
             let minutes = Math.floor(timeLeft / 60);
             let seconds = timeLeft % 60;
             let timerElement = document.getElementById("quiz-timer");
-
+        
             timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-            if (timeLeft <= 30) {
-                timerElement.classList.remove("bg-primary");
-                timerElement.classList.add("bg-danger");
+        
+            // Change background color based on remaining time
+            if (timeLeft <= 60 && timeLeft > 30) { // Between 1:00 and 0:31
+                timerElement.classList.remove("bg-primary", "bg-danger");
+                timerElement.classList.add("bg-warning", "text-dark");
+            } else if (timeLeft <= 30) { // 0:30 and below
+                timerElement.classList.remove("bg-primary", "bg-warning", "text-dark");
+                timerElement.classList.add("bg-danger", "text-white");
+            } else {
+                timerElement.classList.remove("bg-warning", "bg-danger");
+                timerElement.classList.add("bg-primary");
             }
-
+        
             if (timeLeft <= 0) {
                 clearInterval(timer);
                 alert("Time is up! Submitting quiz...");
                 submitQuiz(); // Call submit function when time runs out
                 return;
             }
-
+        
             timeLeft--;
-        }
+        }        
 
         document.getElementById("finishQuiz").addEventListener("click", function (event) {
             // Prevent multiple modals from being created
@@ -309,15 +316,15 @@
                         </tr>
                         <tr>
                             <th class="bg-dark text-white">✅ Correct Answers</th>
-                            <td>${correctCount} / ${totalQuestions}</td>
+                            <td><span class="bg-dark text-white p-1 rounded-2">${correctCount}</span> / ${totalQuestions}</td>
                         </tr>
                         <tr>
                             <th class="bg-dark text-white">❌ Wrong Answers</th>
-                            <td>${wrongAnswersCount} / ${totalQuestions}</td>
+                            <td><span class="bg-dark text-white p-1 rounded-2">${wrongAnswersCount}</span> / ${totalQuestions}</td>
                         </tr>
                         <tr>
                             <th class="bg-dark text-white">❓ Unanswered Questions</th>
-                            <td>${unansweredCount} / ${totalQuestions}</td>
+                            <td><span class="bg-dark text-white p-1 rounded-2">${unansweredCount}</span> / ${totalQuestions}</td>
                         </tr>
                         <tr>
                             <th class="bg-dark text-white">⏳ Time Taken</th>
