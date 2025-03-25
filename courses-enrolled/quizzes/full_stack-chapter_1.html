@@ -196,6 +196,15 @@
             }
         });
 
+        function stopAllSounds() {
+            warningSound.pause();
+            warningSound.currentTime = 0;
+            criticalSound.pause();
+            criticalSound.currentTime = 0;
+            timeUpSound.pause();
+            timeUpSound.currentTime = 0;
+        }
+
         function updateTimer() {
             if (quizFinished) return; // Prevents updating if quiz is already submitted
         
@@ -233,17 +242,16 @@
                 clearInterval(timer);
         
                 // **Stop the critical.mp3 immediately before playing timeup.mp3**
-                criticalSound.pause();
-                criticalSound.currentTime = 0; // Reset it so it doesn't continue
-        
+                stopAllSounds();
                 timeUpSound.play(); // Play the final alert
+        
                 alert("Time is up! Submitting quiz...");
                 submitQuiz(); // Call submit function when time runs out
                 return;
             }
         
             timeLeft--;
-        }
+        }  
 
         document.getElementById("finishQuiz").addEventListener("click", function (event) {
             // Prevent multiple modals from being created
@@ -290,13 +298,15 @@
             quizFinished = true; // Mark quiz as finished
             clearInterval(timer); // Stop the timer after confirmation
 
+            stopAllSounds(); // 🔊 Force stop any playing sound!
+
             let timerElement = document.getElementById("quiz-timer");
 
             if (timeLeft <= 0) {
                 timerElement.classList.add("bg-danger"); // Ensuring that the background is kept "red" if time ran out
             } else {
                 timerElement.classList.remove("bg-primary", "bg-warning", "bg-danger", "text-dark");
-                timerElement.classList.add("bg-success", "text-white"); // background will be green if finished manually
+                timerElement.classList.add("bg-success", "text-white"); // Background will be "green" if finished manually
             }
 
             // Calculate Quiz Results

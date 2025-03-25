@@ -165,7 +165,7 @@
 
     <!-- Quiz Operation & Timer -->
     <script>
-        let totalTime = 1.20 * 60; // 5 minute in seconds
+        let totalTime = 1.25 * 60; // 1 minute and 15 seconds in seconds
         let timeLeft = totalTime;
         let timer;
         let quizFinished = false; // Flag to check if quiz is submitted
@@ -195,6 +195,15 @@
                 timer = setInterval(updateTimer, 1000); // Start the timer
             }
         });
+
+        function stopAllSounds() {
+            warningSound.pause();
+            warningSound.currentTime = 0;
+            criticalSound.pause();
+            criticalSound.currentTime = 0;
+            timeUpSound.pause();
+            timeUpSound.currentTime = 0;
+        }
 
         function updateTimer() {
             if (quizFinished) return; // Prevents updating if quiz is already submitted
@@ -233,17 +242,16 @@
                 clearInterval(timer);
         
                 // **Stop the critical.mp3 immediately before playing timeup.mp3**
-                criticalSound.pause();
-                criticalSound.currentTime = 0; // Reset it so it doesn't continue
-        
+                stopAllSounds();
                 timeUpSound.play(); // Play the final alert
+        
                 alert("Time is up! Submitting quiz...");
                 submitQuiz(); // Call submit function when time runs out
                 return;
             }
         
             timeLeft--;
-        }     
+        }  
 
         document.getElementById("finishQuiz").addEventListener("click", function (event) {
             // Prevent multiple modals from being created
@@ -289,6 +297,8 @@
             if (quizFinished) return; // Prevent multiple submissions
             quizFinished = true; // Mark quiz as finished
             clearInterval(timer); // Stop the timer after confirmation
+
+            stopAllSounds(); // 🔊 Force stop any playing sound!
 
             let timerElement = document.getElementById("quiz-timer");
 
